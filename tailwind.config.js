@@ -5,7 +5,13 @@ module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {
-      colors: { ...customTheme }
+      colors: { ...customTheme },
+      spacing: {
+        18: '72px'
+      },
+      size: {
+        18: '72px'
+      }
     },
     plugins: []
   }

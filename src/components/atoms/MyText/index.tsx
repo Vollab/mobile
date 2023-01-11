@@ -12,4 +12,4 @@ const MyText = ({ content, ...props }: { content: string }) => (
 )
 
 export default styled(MyText)
-// styled to receive custom className on exported component
+
