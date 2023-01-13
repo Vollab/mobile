@@ -1,5 +1,8 @@
+import { Pressable, PressableProps } from 'react-native'
+
+import Text from '@src/components/atoms/Text'
+
 import { styled } from 'nativewind'
-import { Pressable, PressableProps, Text } from 'react-native'
 
 interface IButtonProps extends PressableProps {
   children: string
@@ -17,10 +20,10 @@ const Button = ({ children, variant = 'primary', ...props }: IButtonProps) => {
 
   return (
     <Pressable
-      className={`flex align-center justify-center h-14 w-full rounded-full ${bgColors}`}
+      className={`flex align-center justify-center h-14 w-full rounded-full ${bgColors} max-w-[400px]`}
       {...props}
     >
-      <Text className={`text-center font-semibold text-lg ${textColors}`}>
+      <Text className={`font-title text-center text-lg ${textColors}`}>
         {children}
       </Text>
     </Pressable>

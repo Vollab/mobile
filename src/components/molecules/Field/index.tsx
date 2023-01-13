@@ -1,5 +1,6 @@
-import { styled } from 'nativewind'
 import { TextInput } from 'react-native'
+
+import { styled } from 'nativewind'
 
 const Field = () => <TextInput />
 

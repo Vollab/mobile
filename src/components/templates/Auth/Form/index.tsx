@@ -1,6 +1,7 @@
-import { Text, TouchableOpacity, View } from 'react-native'
-import Button from '@src/components/atoms/Button'
-import Google from '@src/components/atoms/Google'
+import { View } from 'react-native'
+
+import Button from '@src/components/molecules/Button'
+import GoogleButton from '@src/components/molecules/GoogleButton'
 
 export default function Form() {
   return (
@@ -9,10 +10,7 @@ export default function Form() {
 
       <Button className='mt-6'>Cadastrar</Button>
 
-      <TouchableOpacity className='flex flex-row mt-6'>
-        <Google className='h-6 w-6 mr-4' />
-        <Text>Entrar com o Google</Text>
-      </TouchableOpacity>
+      <GoogleButton />
     </View>
   )
 }

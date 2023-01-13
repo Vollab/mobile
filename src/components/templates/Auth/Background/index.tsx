@@ -13,7 +13,9 @@ import { styled } from 'nativewind'
 const FormBackgroundComponent = () => (
   <View
     style={styles.bgRounded}
-    className='absolute top-full -z-10 bg-secondary-500 -translate-y-52'
+    className={`absolute top-full -z-10 bg-secondary-500 ${
+      Platform.OS === 'web' ? '-translate-y-64' : '-translate-y-52'
+    }`}
   />
 )
 
@@ -24,10 +26,10 @@ const BackgroundComponent = () => (
 const styles = StyleSheet.create({
   bgRounded: {
     height: 800,
-    borderRadius: Platform.OS === 'web' ? 0 : 400,
+    borderRadius: 400,
     width:
       Platform.OS === 'web'
-        ? '100%'
+        ? '180vw'
         : Dimensions.get('screen').width * 1.8 + StatusBar.currentHeight * 2
   }
 })
