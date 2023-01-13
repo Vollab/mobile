@@ -1,12 +1,19 @@
-import { Dimensions, Image, StatusBar, StyleSheet, View } from 'react-native'
+import {
+  Dimensions,
+  Image,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View
+} from 'react-native'
 
 import bg from '@assets/bg.png'
 import { styled } from 'nativewind'
 
 const FormBackgroundComponent = () => (
   <View
-    className='absolute top-full -z-10 bg-white -translate-y-96'
     style={styles.bgRounded}
+    className='absolute top-full -z-10 bg-secondary-500 -translate-y-52'
   />
 )
 
@@ -17,8 +24,11 @@ const BackgroundComponent = () => (
 const styles = StyleSheet.create({
   bgRounded: {
     height: 800,
-    borderRadius: 400,
-    width: Dimensions.get('screen').width * 1.8 + StatusBar.currentHeight * 2
+    borderRadius: Platform.OS === 'web' ? 0 : 400,
+    width:
+      Platform.OS === 'web'
+        ? '100%'
+        : Dimensions.get('screen').width * 1.8 + StatusBar.currentHeight * 2
   }
 })
 

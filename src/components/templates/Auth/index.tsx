@@ -11,13 +11,12 @@ export default function Auth() {
 
       <SafeAreaView
         style={styles.container}
-        className='flex-1 flex-col items-center'
+        className='flex-1 flex-col items-center overflow-hidden'
       >
         <Background />
         <FormBackground />
 
         <Header />
-
         <Form />
       </SafeAreaView>
     </>
