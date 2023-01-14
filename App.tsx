@@ -1,6 +1,7 @@
-import Auth from '@src/components/templates/Auth'
 import '@src/styles'
 
+import SignIn from '@src/components/templates/SignIn'
+
 export default function App() {
-  return <Auth />
+  return <SignIn />
 }

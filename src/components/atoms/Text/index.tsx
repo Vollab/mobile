@@ -24,7 +24,7 @@ const Text = ({ children, variant = 'regular', ...props }: ITextProps) => {
   if (!fontsLoaded) return null
 
   return (
-    <RNText className='font-body' {...props}>
+    <RNText className='font-body text-base' {...props}>
       {children}
     </RNText>
   )

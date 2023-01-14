@@ -1,4 +1,4 @@
-import Form from './Footer'
+import Footer from './Footer'
 import Header from './Header'
 
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
@@ -8,7 +8,7 @@ import FormBackground from '@src/components/molecules/Backgrounds/FormBackground
 
 import React from 'react'
 
-export default function Auth() {
+export default function SignIn() {
   return (
     <>
       <StatusBar backgroundColor='transparent' translucent />
@@ -18,10 +18,12 @@ export default function Auth() {
         className='flex-1 flex-col items-center overflow-hidden'
       >
         <AppBackground />
-        <FormBackground />
+
+        <FormBackground translateY={{ mobile: '-translate-y-96' }} />
 
         <Header />
-        <Form />
+
+        <Footer />
       </SafeAreaView>
     </>
   )

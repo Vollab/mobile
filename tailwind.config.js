@@ -20,8 +20,18 @@ module.exports = {
       title_italic: ['OpenSans_600SemiBold_Italic']
     },
     extend: {
-      size: { 18: '72px' },
-      spacing: { 18: '72px' },
+      size: {
+        18: '72px',
+        108: '432px',
+        150: '600px'
+      },
+
+      spacing: {
+        18: '72px',
+        108: '432px',
+        150: '600px'
+      },
+
       colors: { ...customTheme }
     }
   }
