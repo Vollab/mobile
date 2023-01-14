@@ -6,9 +6,10 @@ import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
 import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
 import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
 
+import { RootStackScreen } from 'App'
 import React from 'react'
 
-export default function SignIn() {
+export default function SignIn({ navigation }: RootStackScreen<'SignIn'>) {
   return (
     <>
       <StatusBar backgroundColor='transparent' translucent />
@@ -21,7 +22,11 @@ export default function SignIn() {
 
         <FormBackground translateY={{ mobile: '-translate-y-96' }} />
 
-        <Header />
+        <Header
+          onArrowPress={() => {
+            navigation.goBack()
+          }}
+        />
 
         <Footer />
       </SafeAreaView>

@@ -1,4 +1,4 @@
-import Form from './Footer'
+import Footer from './Footer'
 import Header from './Header'
 
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
@@ -6,9 +6,12 @@ import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
 import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
 import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
 
+import { RootStackScreen } from 'App'
 import React from 'react'
 
-export default function Auth() {
+export default function AuthSelect({
+  navigation
+}: RootStackScreen<'AuthSelect'>) {
   return (
     <>
       <StatusBar backgroundColor='transparent' translucent />
@@ -21,7 +24,13 @@ export default function Auth() {
         <FormBackground />
 
         <Header />
-        <Form />
+
+        <Footer
+          onSignUpPress={() => {}}
+          onSignInPress={() => {
+            navigation.navigate('SignIn')
+          }}
+        />
       </SafeAreaView>
     </>
   )
