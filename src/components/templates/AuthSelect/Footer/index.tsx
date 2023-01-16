@@ -10,7 +10,7 @@ interface IFooterProps {
 
 export default function Footer({ onSignInPress, onSignUpPress }: IFooterProps) {
   return (
-    <View className='w-full h-64 flex px-14 items-center justify-center'>
+    <View className='relative z-20 w-full h-64 flex px-14 items-center justify-center'>
       <Button variant='secondary' onPress={onSignInPress}>
         Entrar
       </Button>

@@ -18,7 +18,7 @@ const FormBackground = ({ translateY }: IFormBackground) => {
   return (
     <View
       style={styles.bg}
-      className={`absolute top-full -z-10 bg-secondary-500 ${translateTop}`}
+      className={`absolute z-10 top-full bg-secondary-500 ${translateTop}`}
     />
   )
 }

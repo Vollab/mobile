@@ -1,7 +1,12 @@
 import Footer from './Footer'
 import Header from './Header'
 
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
+import {
+  KeyboardAvoidingView,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet
+} from 'react-native'
 
 import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
 import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
@@ -20,7 +25,7 @@ export default function SignIn({ navigation }: RootStackScreen<'SignIn'>) {
       >
         <AppBackground />
 
-        <FormBackground translateY={{ mobile: '-translate-y-96' }} />
+        <FormBackground translateY={{ mobile: '-translate-y-80' }} />
 
         <Header
           onArrowPress={() => {
