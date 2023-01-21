@@ -1,7 +1,8 @@
-import GoogleIcon from '../../atoms/GoogleIcon'
 import Text from '../../atoms/Text'
 
 import { TouchableOpacity } from 'react-native'
+
+import GoogleIcon from '@src/components/icons/GoogleIcon'
 
 import { styled } from 'nativewind'
 import React from 'react'

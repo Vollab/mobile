@@ -2,6 +2,7 @@ import '@src/styles'
 
 import AuthSelect from '@src/components/templates/AuthSelect'
 import SignIn from '@src/components/templates/SignIn'
+import SignUp from '@src/components/templates/SignUp'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -11,6 +12,7 @@ const { Navigator, Screen } = createNativeStackNavigator()
 
 type RootStackParamList = {
   SignIn: undefined
+  SignUp: undefined
   AuthSelect: undefined
 }
 
@@ -26,6 +28,7 @@ export default function App() {
       >
         <Screen name='AuthSelect' component={AuthSelect} />
         <Screen name='SignIn' component={SignIn} />
+        <Screen name='SignUp' component={SignUp} />
       </Navigator>
     </NavigationContainer>
   )
