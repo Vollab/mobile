@@ -5,7 +5,7 @@ import theme from '@src/styles/theme'
 import Text from '@src/components/atoms/Text'
 import UserIcon from '@src/components/icons/UserIcon'
 
-export default function Footer() {
+export default function Footer({ navigation }: any) {
   return (
     <View className='w-full h-116'>
       <KeyboardAvoidingView
@@ -39,7 +39,10 @@ export default function Footer() {
             <Text className='text-secondary-500 mt-4 text-lg'>Candidato</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-requester-500'>
+          <TouchableOpacity
+            className='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-requester-500'
+            onPress={() => navigation.push('RequesterSignUp')}
+          >
             <UserIcon className='h-8 w-8' fill={theme.secondary[500]} />
 
             <Text className='text-secondary-500 mt-4 text-lg'>Solicitante</Text>

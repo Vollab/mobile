@@ -9,7 +9,7 @@ interface IHeaderProps {
 
 export default function Header({ onArrowPress }: IHeaderProps) {
   return (
-    <View className='flex-1 flex-col items-center justify-between pb-12 pt-4 mb-16'>
+    <View className='flex-1 flex-col items-center justify-between pb-12 pt-4 mb-10'>
       <View className='flex w-screen px-6'>
         <TouchableOpacity onPress={onArrowPress} className='h-6 w-4'>
           <Arrow className='h-6 w-4 fill-secondary-500' />

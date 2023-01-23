@@ -14,18 +14,20 @@ import FormBackground from '@src/components/molecules/Backgrounds/FormBackground
 import { RootStackScreen } from 'App'
 import React from 'react'
 
-export default function SignUp({ navigation }: RootStackScreen<'SignUp'>) {
+export default function RequesterSignUp({
+  navigation
+}: RootStackScreen<'RequesterSignUp'>) {
   return (
     <>
       <StatusBar backgroundColor='transparent' translucent />
 
       <SafeAreaView
         style={styles.container}
-        className='flex-1 flex-col items-center overflow-hidden'
+        className='flex flex-1 flex-col items-center overflow-hidden'
       >
         <AppBackground />
 
-        <FormBackground translateY={{ mobile: '-translate-y-116' }} />
+        <FormBackground translateY={{ mobile: '-translate-y-129' }} />
 
         <Header
           onArrowPress={() => {
@@ -33,7 +35,7 @@ export default function SignUp({ navigation }: RootStackScreen<'SignUp'>) {
           }}
         />
 
-        <Footer navigation={navigation} />
+        <Footer />
       </SafeAreaView>
     </>
   )
