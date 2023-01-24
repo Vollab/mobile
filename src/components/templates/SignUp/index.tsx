@@ -1,44 +1,51 @@
-import Footer from './Footer'
-import Header from './Header'
+import { TouchableOpacity, View } from 'react-native'
 
-import {
-  KeyboardAvoidingView,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet
-} from 'react-native'
+import colors from '@src/styles/colors'
 
-import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
-import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
+import Text from '@src/components/atoms/Text'
+import UserIcon from '@src/components/icons/UserIcon'
+import AuthLayout from '@src/components/layouts/AuthLayout'
 
 import { RootStackScreen } from 'App'
-import React from 'react'
 
-export default function SignUp({ navigation }: RootStackScreen<'SignUp'>) {
-  return (
-    <>
-      <StatusBar backgroundColor='transparent' translucent />
+const SignUp = ({ navigation }: RootStackScreen<'SignUp'>) => (
+  <AuthLayout nav={{ arrow: true }} navigation={navigation}>
+    <Text className='text-xl text-primary-500 font-semibold'>
+      Você precisa de ajuda ou quer ajudar alguém?
+    </Text>
 
-      <SafeAreaView
-        style={styles.container}
-        className='flex-1 flex-col items-center overflow-hidden'
+    <Text className='text-lg w-full text-candidate-500 mt-8'>Candidato</Text>
+
+    <Text className='w-full'>
+      Criar seu próprio portfólio resolvendo problemas do mundo real!
+    </Text>
+
+    <Text className='text-lg w-full text-requester-500 mt-6'>Solicitante</Text>
+
+    <Text className='w-full'>
+      Encontrar voluntários para resolver problemas!
+    </Text>
+
+    <View className='flex flex-row w-full justify-between mt-8'>
+      <TouchableOpacity
+        onPress={() => navigation.push('CandidateSignUp')}
+        className='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-candidate-500'
       >
-        <AppBackground />
+        <UserIcon className='h-8 w-8' fill={colors.secondary[500]} />
 
-        <FormBackground translateY={{ mobile: '-translate-y-116' }} />
+        <Text className='text-secondary-500 mt-4 text-lg'>Candidato</Text>
+      </TouchableOpacity>
 
-        <Header
-          onArrowPress={() => {
-            navigation.goBack()
-          }}
-        />
+      <TouchableOpacity
+        className='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-requester-500'
+        onPress={() => navigation.push('RequesterSignUp')}
+      >
+        <UserIcon className='h-8 w-8' fill={colors.secondary[500]} />
 
-        <Footer navigation={navigation} />
-      </SafeAreaView>
-    </>
-  )
-}
+        <Text className='text-secondary-500 mt-4 text-lg'>Solicitante</Text>
+      </TouchableOpacity>
+    </View>
+  </AuthLayout>
+)
 
-const styles = StyleSheet.create({
-  container: { paddingTop: StatusBar.currentHeight }
-})
+export default SignUp

@@ -1,43 +1,34 @@
-import Footer from './Footer'
-import Header from './Header'
-
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
-
-import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
-import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
+import AuthLayout from '@src/components/layouts/AuthLayout'
+import Button from '@src/components/molecules/Button'
+import GoogleButton from '@src/components/molecules/GoogleButton'
 
 import { RootStackScreen } from 'App'
-import React from 'react'
 
-export default function AuthSelect({
-  navigation
-}: RootStackScreen<'AuthSelect'>) {
-  return (
-    <>
-      <StatusBar backgroundColor='transparent' translucent />
+const AuthSelect = ({ navigation }: RootStackScreen<'AuthSelect'>) => (
+  <AuthLayout
+    navigation={navigation}
+    headerTitle='O melhor lugar para construir portfólios ou buscar por voluntários'
+  >
+    <Button
+      variant='secondary'
+      onPress={() => {
+        navigation.navigate('SignIn')
+      }}
+    >
+      Entrar
+    </Button>
 
-      <SafeAreaView
-        style={styles.container}
-        className='flex-1 flex-col items-center overflow-hidden'
-      >
-        <AppBackground />
-        <FormBackground />
+    <Button
+      className='mt-6'
+      onPress={() => {
+        navigation.navigate('SignUp')
+      }}
+    >
+      Cadastrar
+    </Button>
 
-        <Header />
+    <GoogleButton className='mt-6' />
+  </AuthLayout>
+)
 
-        <Footer
-          onSignUpPress={() => {
-            navigation.navigate('SignUp')
-          }}
-          onSignInPress={() => {
-            navigation.navigate('SignIn')
-          }}
-        />
-      </SafeAreaView>
-    </>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: { paddingTop: StatusBar.currentHeight }
-})
+export default AuthSelect

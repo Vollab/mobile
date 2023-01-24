@@ -13,7 +13,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 const { Navigator, Screen } = createNativeStackNavigator()
 
-type RootStackParamList = {
+export type RootStackParamList = {
   SignIn: undefined
   SignUp: undefined
   AuthSelect: undefined
@@ -30,7 +30,7 @@ export default function App() {
     <NavigationContainer>
       <Navigator
         initialRouteName='AuthSelect'
-        screenOptions={{ headerShown: false, animation: 'fade' }}
+        screenOptions={{ headerShown: false, animation: 'fade_from_bottom' }}
       >
         <Screen name='AuthSelect' component={AuthSelect} />
         <Screen name='SignIn' component={SignIn} />

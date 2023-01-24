@@ -1,4 +1,4 @@
-const customTheme = require('./src/styles/theme')
+const customColors = require('./src/styles/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
         150: '600px'
       },
 
-      colors: { ...customTheme }
+      colors: { ...customColors }
     }
   }
 }

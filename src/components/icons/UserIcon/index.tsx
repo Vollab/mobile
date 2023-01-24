@@ -2,7 +2,6 @@ import { View } from 'react-native'
 import Svg, { Path, SvgProps } from 'react-native-svg'
 
 import { styled } from 'nativewind'
-import * as React from 'react'
 
 const UserIcon = ({ fill, ...props }: SvgProps) => (
   <View {...props}>

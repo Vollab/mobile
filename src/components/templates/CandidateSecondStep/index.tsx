@@ -1,41 +1,33 @@
-import Footer from './Footer'
-import Header from './Header'
-
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
-
-import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
-import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
+import Text from '@src/components/atoms/Text'
+import AuthLayout from '@src/components/layouts/AuthLayout'
+import Button from '@src/components/molecules/Button'
+import Field from '@src/components/molecules/Field'
 
 import { RootStackScreen } from 'App'
-import React from 'react'
 
-export default function CandidateSecondStep({
+const CandidateSecondStep = ({
   navigation
-}: RootStackScreen<'CandidateSecondStep'>) {
-  return (
-    <>
-      <StatusBar backgroundColor='transparent' translucent />
+}: RootStackScreen<'CandidateSecondStep'>) => (
+  <AuthLayout navigation={navigation} nav={{ arrow: true }}>
+    <Text className='text-xl w-full text-candidate-500 mt-6'>Quase lá</Text>
 
-      <SafeAreaView
-        style={styles.container}
-        className='flex flex-1 flex-col items-center overflow-hidden'
-      >
-        <AppBackground />
+    <Text className='w-full mb-4'>
+      Não se preocupe algumas informações poderão ser alteradas posteriormente
+    </Text>
 
-        <FormBackground translateY={{ mobile: '-translate-y-108' }} />
+    <Field placeholder='Pequena descrição' className='mb-4' />
+    <Field placeholder='Área de atuação' className='mb-4' />
+    <Field placeholder='Nível de experiência' className='mb-4' />
 
-        <Header
-          onArrowPress={() => {
-            navigation.goBack()
-          }}
-        />
+    <Button
+      className='bg-candidate-500'
+      onPress={() => {
+        navigation.navigate('SignIn')
+      }}
+    >
+      Concluir cadastro
+    </Button>
+  </AuthLayout>
+)
 
-        <Footer navigation={navigation} />
-      </SafeAreaView>
-    </>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: { paddingTop: StatusBar.currentHeight }
-})
+export default CandidateSecondStep

@@ -9,7 +9,7 @@ const AppBackground = () => (
   <Image
     source={bg as any}
     style={{ height: phoneHeight }}
-    className='absolute w-full -z-20'
+    className='absolute w-full h-full -z-20'
   />
 )
 

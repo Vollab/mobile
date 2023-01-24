@@ -1,46 +1,33 @@
-import Footer from './Footer'
-import Header from './Header'
-
-import {
-  KeyboardAvoidingView,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet
-} from 'react-native'
-
-import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
-import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
+import Text from '@src/components/atoms/Text'
+import AuthLayout from '@src/components/layouts/AuthLayout'
+import Button from '@src/components/molecules/Button'
+import Field from '@src/components/molecules/Field'
 
 import { RootStackScreen } from 'App'
-import React from 'react'
 
-export default function CandidateSignUp({
+const CandidateSignUp = ({
   navigation
-}: RootStackScreen<'CandidateSignUp'>) {
-  return (
-    <>
-      <StatusBar backgroundColor='transparent' translucent />
+}: RootStackScreen<'CandidateSignUp'>) => (
+  <AuthLayout navigation={navigation} nav={{ arrow: true }}>
+    <Text className='text-xl w-full text-candidate-500 mt-6'>Candidato</Text>
+    <Text className='w-full mb-4'>
+      Encontrar voluntários para resolver problemas!
+    </Text>
 
-      <SafeAreaView
-        style={styles.container}
-        className='flex flex-1 flex-col items-center overflow-hidden'
-      >
-        <AppBackground />
+    <Field placeholder='Nome completo' className='mb-4' />
+    <Field placeholder='E-mail' className='mb-4' />
+    <Field placeholder='Senha' className='mb-4' />
+    <Field placeholder='Confirmar senha' className='mb-4' />
 
-        <FormBackground translateY={{ mobile: '-translate-y-129' }} />
+    <Button
+      className='bg-candidate-500'
+      onPress={() => {
+        navigation.navigate('CandidateSecondStep')
+      }}
+    >
+      Próximo passo
+    </Button>
+  </AuthLayout>
+)
 
-        <Header
-          onArrowPress={() => {
-            navigation.goBack()
-          }}
-        />
-
-        <Footer navigation={navigation} />
-      </SafeAreaView>
-    </>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: { paddingTop: StatusBar.currentHeight }
-})
+export default CandidateSignUp

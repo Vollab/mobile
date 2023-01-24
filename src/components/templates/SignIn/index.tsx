@@ -1,44 +1,34 @@
-import Footer from './Footer'
-import Header from './Header'
+import { TouchableOpacity } from 'react-native'
 
-import {
-  KeyboardAvoidingView,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet
-} from 'react-native'
-
-import AppBackground from '@src/components/molecules/Backgrounds/AppBackground'
-import FormBackground from '@src/components/molecules/Backgrounds/FormBackground'
+import Text from '@src/components/atoms/Text'
+import AuthLayout from '@src/components/layouts/AuthLayout'
+import Button from '@src/components/molecules/Button'
+import Field from '@src/components/molecules/Field'
 
 import { RootStackScreen } from 'App'
-import React from 'react'
+import Checkbox from 'expo-checkbox'
 
-export default function SignIn({ navigation }: RootStackScreen<'SignIn'>) {
-  return (
-    <>
-      <StatusBar backgroundColor='transparent' translucent />
+const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => (
+  <AuthLayout
+    navigation={navigation}
+    nav={{ arrow: true, arrowRedirect: 'AuthSelect' }}
+    headerTitle='Construa seu portfólio ajudando pessoas'
+  >
+    <Field placeholder='E-mail' className='mb-4' />
 
-      <SafeAreaView
-        style={styles.container}
-        className='flex-1 flex-col items-center overflow-hidden'
-      >
-        <AppBackground />
+    <Field placeholder='Senha' className='mb-4' />
 
-        <FormBackground translateY={{ mobile: '-translate-y-80' }} />
+    <TouchableOpacity className='flex flex-row items-center mb-4'>
+      <Checkbox className='mr-4' />
+      <Text className='text-sm'>Lembrar senha</Text>
+    </TouchableOpacity>
 
-        <Header
-          onArrowPress={() => {
-            navigation.goBack()
-          }}
-        />
+    <Button className='mb-3'>Entrar</Button>
 
-        <Footer />
-      </SafeAreaView>
-    </>
-  )
-}
+    <TouchableOpacity className='mb-3'>
+      <Text className='text-sm'>Esqueci minha senha</Text>
+    </TouchableOpacity>
+  </AuthLayout>
+)
 
-const styles = StyleSheet.create({
-  container: { paddingTop: StatusBar.currentHeight }
-})
+export default SignIn
