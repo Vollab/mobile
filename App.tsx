@@ -1,6 +1,8 @@
 import '@src/styles'
 
 import AuthSelect from '@src/components/templates/AuthSelect'
+import CandidateSecondStep from '@src/components/templates/CandidateSecondStep'
+import CandidateSignUp from '@src/components/templates/CandidateSignUp'
 import RequesterSignUp from '@src/components/templates/RequesterSignUp'
 import SignIn from '@src/components/templates/SignIn'
 import SignUp from '@src/components/templates/SignUp'
@@ -16,6 +18,8 @@ type RootStackParamList = {
   SignUp: undefined
   AuthSelect: undefined
   RequesterSignUp: undefined
+  CandidateSignUp: undefined
+  CandidateSecondStep: undefined
 }
 
 export type RootStackScreen<T extends keyof RootStackParamList> =
@@ -32,6 +36,8 @@ export default function App() {
         <Screen name='SignIn' component={SignIn} />
         <Screen name='SignUp' component={SignUp} />
         <Screen name='RequesterSignUp' component={RequesterSignUp} />
+        <Screen name='CandidateSignUp' component={CandidateSignUp} />
+        <Screen name='CandidateSecondStep' component={CandidateSecondStep} />
       </Navigator>
     </NavigationContainer>
   )

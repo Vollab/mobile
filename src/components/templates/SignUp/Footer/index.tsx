@@ -33,7 +33,10 @@ export default function Footer({ navigation }: any) {
         </Text>
 
         <View className='flex flex-row w-full justify-between mt-8'>
-          <TouchableOpacity className='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-candidate-500'>
+          <TouchableOpacity
+            onPress={() => navigation.push('CandidateSignUp')}
+            className='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-candidate-500'
+          >
             <UserIcon className='h-8 w-8' fill={theme.secondary[500]} />
 
             <Text className='text-secondary-500 mt-4 text-lg'>Candidato</Text>
