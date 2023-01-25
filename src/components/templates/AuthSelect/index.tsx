@@ -27,7 +27,7 @@ const AuthSelect = ({ navigation }: RootStackScreen<'AuthSelect'>) => (
       Cadastrar
     </Button>
 
-    <GoogleButton className='mt-6' />
+    <GoogleButton className='mt-6 w-full' />
   </AuthLayout>
 )
 

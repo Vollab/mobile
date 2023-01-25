@@ -11,7 +11,12 @@ import Checkbox from 'expo-checkbox'
 const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => (
   <AuthLayout
     navigation={navigation}
-    nav={{ arrow: true, arrowRedirect: 'AuthSelect' }}
+    nav={{
+      arrow: true,
+      onArrowClick: () => {
+        navigation.navigate('AuthSelect')
+      }
+    }}
     headerTitle='Construa seu portfólio ajudando pessoas'
   >
     <Field placeholder='E-mail' className='mb-4' />

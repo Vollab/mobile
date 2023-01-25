@@ -5,13 +5,18 @@ import { AuthLayoutContext } from './context'
 
 import { SafeAreaView, StatusBar } from 'react-native'
 
+import colors from '@src/styles/colors'
+
 import { NativeStackScreenProps } from '@react-navigation/native-stack/lib/typescript/src/types'
+import { styled } from 'nativewind'
 import React, { ReactNode } from 'react'
 
 export interface IAuthLayoutProps {
   children: ReactNode
+  hideHeader?: boolean
   headerTitle?: string
-  nav?: { arrow?: boolean; arrowRedirect?: string }
+  nav?: { arrow?: boolean; onArrowClick?: any }
+  keyboardBehavior?: 'position' | 'height' | 'padding'
   navigation: NativeStackScreenProps<any, any>['navigation']
 }
 
@@ -19,10 +24,17 @@ const AuthLayout = ({
   nav,
   children,
   navigation,
-  headerTitle
+  headerTitle,
+  hideHeader,
+  keyboardBehavior,
+  ...props
 }: IAuthLayoutProps) => (
   <>
-    <StatusBar backgroundColor='transparent' translucent />
+    <StatusBar
+      translucent
+      barStyle={hideHeader ? 'dark-content' : 'light-content'}
+      backgroundColor={hideHeader ? colors.secondary[500] : 'transparent'}
+    />
 
     <SafeAreaView
       style={{ paddingTop: StatusBar.currentHeight }}
@@ -31,12 +43,18 @@ const AuthLayout = ({
       <AppBackground />
 
       <AuthLayoutContext.Provider value={{ navigation, nav }}>
-        <Header headerTitle={headerTitle} />
+        {!hideHeader && <Header headerTitle={headerTitle} />}
 
-        <Footer>{children}</Footer>
+        <Footer
+          hideHeader={hideHeader}
+          keyboardBehavior={keyboardBehavior}
+          {...props}
+        >
+          {children}
+        </Footer>
       </AuthLayoutContext.Provider>
     </SafeAreaView>
   </>
 )
 
-export default AuthLayout
+export default styled(AuthLayout)
