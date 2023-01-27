@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import { spacing } from '@src/styles/spacing'
+import spacing from '@src/styles/custom/spacing'
 
 type TOSRelative = (
   mobile: string | number,

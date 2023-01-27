@@ -1,9 +1,9 @@
 import { TouchableOpacity, View } from 'react-native'
 
-import colors from '@src/styles/colors'
+import colors from '@src/styles/custom/colors'
 
+import UserIcon from '@src/components/assets/UserIcon'
 import Text from '@src/components/atoms/Text'
-import UserIcon from '@src/components/icons/UserIcon'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 
 import { RootStackScreen } from 'App'

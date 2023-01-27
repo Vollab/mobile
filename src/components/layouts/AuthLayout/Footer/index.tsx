@@ -1,12 +1,12 @@
 import Nav from '../Nav'
 import { AuthLayoutContext } from '../context'
 
-import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
-import { Platform, StatusBar } from 'react-native'
+import { KeyboardAvoidingView, View } from 'react-native'
+import { Platform } from 'react-native'
 
-import colors from '@src/styles/colors'
+import colors from '@src/styles/custom/colors'
 
-import RoundedTop from '@src/components/icons/RoundedTop'
+import RoundedTop from '@src/components/assets/RoundedTop'
 
 import { IAuthLayoutProps } from '..'
 import { styled } from 'nativewind'
@@ -37,7 +37,9 @@ const Footer = ({
 
       <View
         className={`
-          relative p-8 w-full z-20 bg-secondary-500 md:w-1/2 md:h-full
+          relative p-8 z-20 bg-secondary-500 overflow-hidden 
+          w-full
+          md:w-1/2 md:h-full
           ${hideHeader && 'h-full'}
         `}
         {...props}
@@ -48,7 +50,8 @@ const Footer = ({
           enabled={!!keyboardBehavior}
           behavior={keyboardBehavior}
           className={`
-              w-full overflow-hidden md:h-full
+              flex items-center justify-center w-full
+              md:h-full
               ${hideHeader && 'flex-1'}
             `}
         >

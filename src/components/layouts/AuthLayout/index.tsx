@@ -5,7 +5,7 @@ import { AuthLayoutContext } from './context'
 
 import { SafeAreaView, StatusBar } from 'react-native'
 
-import colors from '@src/styles/colors'
+import colors from '@src/styles/custom/colors'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack/lib/typescript/src/types'
 import { styled } from 'nativewind'
@@ -29,7 +29,7 @@ const AuthLayout = ({
   keyboardBehavior,
   ...props
 }: IAuthLayoutProps) => (
-  <>
+  <AuthLayoutContext.Provider value={{ navigation, nav }}>
     <StatusBar
       translucent
       barStyle={hideHeader ? 'dark-content' : 'light-content'}
@@ -38,23 +38,21 @@ const AuthLayout = ({
 
     <SafeAreaView
       style={{ paddingTop: StatusBar.currentHeight }}
-      className='flex-1 flex-col items-center overflow-hidden md:flex-row-reverse'
+      className='flex flex-col h-full overflow-hidden md:flex-row-reverse'
     >
       <AppBackground />
 
-      <AuthLayoutContext.Provider value={{ navigation, nav }}>
-        {!hideHeader && <Header headerTitle={headerTitle} />}
+      {!hideHeader && <Header headerTitle={headerTitle} />}
 
-        <Footer
-          hideHeader={hideHeader}
-          keyboardBehavior={keyboardBehavior}
-          {...props}
-        >
-          {children}
-        </Footer>
-      </AuthLayoutContext.Provider>
+      <Footer
+        hideHeader={hideHeader}
+        keyboardBehavior={keyboardBehavior}
+        {...props}
+      >
+        {children}
+      </Footer>
     </SafeAreaView>
-  </>
+  </AuthLayoutContext.Provider>
 )
 
 export default styled(AuthLayout)

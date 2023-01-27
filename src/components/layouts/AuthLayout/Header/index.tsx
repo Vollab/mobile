@@ -4,9 +4,9 @@ import { AuthLayoutContext } from '../context'
 import { View } from 'react-native'
 import { Platform } from 'react-native'
 
-import colors from '@src/styles/colors'
+import colors from '@src/styles/custom/colors'
 
-import Logo from '@src/components/atoms/Logo'
+import Logo from '@src/components/assets/Logo'
 import Text from '@src/components/atoms/Text'
 
 import { IAuthLayoutProps } from '..'

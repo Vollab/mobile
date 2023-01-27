@@ -2,7 +2,7 @@ import Text from '../../atoms/Text'
 
 import { TouchableOpacity } from 'react-native'
 
-import GoogleIcon from '@src/components/icons/GoogleIcon'
+import GoogleIcon from '@src/components/assets/GoogleIcon'
 
 import { styled } from 'nativewind'
 import React from 'react'

@@ -31,7 +31,7 @@ const CandidateSignUp = ({
         </>
       )}
 
-      <ScrollView>
+      <ScrollView className='w-full'>
         <Field placeholder='Nome completo' className='mb-4' />
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />

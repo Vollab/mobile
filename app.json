@@ -2,10 +2,10 @@
   "expo": {
     "name": "Vollab",
     "slug": "Vollab",
-    "userInterfaceStyle": "automatic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
     "updates": {
       "fallbackToCacheTimeout": 0
     },

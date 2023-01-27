@@ -1,7 +1,7 @@
 import { Dimensions, View } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
-import { OSRelative } from '@src/utils/OSRelative'
+import { OSRelative } from '@src/utils/OS'
 
 import { styled } from 'nativewind'
 
