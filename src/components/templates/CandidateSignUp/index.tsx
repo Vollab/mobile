@@ -12,14 +12,14 @@ import { RootStackScreen } from 'App'
 const CandidateSignUp = ({
   navigation
 }: RootStackScreen<'CandidateSignUp'>) => {
-  const { hideHeader, nav, showInfo, className } = useAuthForm()
+  const { hideHeader, nav, showInfo, removePadding } = useAuthForm()
 
   return (
     <AuthLayout
       nav={nav}
-      className={className}
       navigation={navigation}
       hideHeader={hideHeader}
+      className={removePadding}
     >
       {showInfo && (
         <>

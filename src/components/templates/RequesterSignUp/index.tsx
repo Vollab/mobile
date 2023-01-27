@@ -12,10 +12,15 @@ import { RootStackScreen } from 'App'
 const RequesterSignUp = ({
   navigation
 }: RootStackScreen<'RequesterSignUp'>) => {
-  const { hideHeader, nav, showInfo, showSubmit } = useAuthForm()
+  const { hideHeader, nav, showInfo, removePadding } = useAuthForm()
 
   return (
-    <AuthLayout nav={nav} navigation={navigation} hideHeader={hideHeader}>
+    <AuthLayout
+      nav={nav}
+      navigation={navigation}
+      hideHeader={hideHeader}
+      className={removePadding}
+    >
       {showInfo && (
         <>
           <Text className='text-xl w-full text-requester-500'>Solicitante</Text>

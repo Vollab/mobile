@@ -20,17 +20,16 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => (
     headerTitle='Construa seu portfólio ajudando pessoas'
   >
     <Field placeholder='E-mail' className='mb-4' />
-
     <Field placeholder='Senha' className='mb-4' />
 
-    <TouchableOpacity className='flex flex-row items-center mb-4'>
+    <TouchableOpacity className='flex flex-row items-center justify-center mb-4'>
       <Checkbox className='mr-4' />
       <Text className='text-sm'>Lembrar senha</Text>
     </TouchableOpacity>
 
     <Button className='mb-3'>Entrar</Button>
 
-    <TouchableOpacity className='mb-3'>
+    <TouchableOpacity className='mb-3 flex flex-row justify-center'>
       <Text className='text-sm'>Esqueci minha senha</Text>
     </TouchableOpacity>
   </AuthLayout>

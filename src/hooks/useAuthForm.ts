@@ -7,12 +7,12 @@ const useAuthForm = () => {
 
   const showInfo = !isKeyboardVisible
   const hideHeader = isKeyboardVisible
-  const showSubmit = !isKeyboardVisible
-  const className = isKeyboardVisible ? 'pb-0' : undefined
+  const removePadding = isKeyboardVisible ? 'pb-0' : undefined
+
   const onArrowClick = isKeyboardVisible ? Keyboard.dismiss : undefined
   const nav = { arrow: true, onArrowClick }
 
-  return { nav, hideHeader, showInfo, showSubmit, className }
+  return { nav, hideHeader, showInfo, removePadding }
 }
 
 export default useAuthForm
