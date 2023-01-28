@@ -1,5 +1,4 @@
-import { ScrollView } from 'react-native'
-
+import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
@@ -12,7 +11,7 @@ import { RootStackScreen } from 'App'
 const RequesterSignUp = ({
   navigation
 }: RootStackScreen<'RequesterSignUp'>) => {
-  const { hideHeader, nav, showInfo, removePadding } = useAuthForm()
+  const { hideHeader, nav, showInfo, removePadding } = useAuthForm({})
 
   return (
     <AuthLayout
@@ -23,29 +22,38 @@ const RequesterSignUp = ({
     >
       {showInfo && (
         <>
-          <Text className='text-xl w-full text-requester-500'>Solicitante</Text>
+          <Text className='text-xl w-full  max-w-screen-s100 text-requester-500 md:text-center'>
+            Solicitante
+          </Text>
 
-          <Text className='w-full mb-6'>
+          <Text className='w-full max-w-screen-s100 mb-6 md:text-center'>
             Encontrar voluntários para resolver problemas!
           </Text>
         </>
       )}
 
-      <ScrollView className='w-full'>
+      <RelativeScrollView
+        className='w-full'
+        contentContainerStyle={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
         <Field className='mb-4' placeholder='Nome completo' />
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />
         <Field placeholder='Confirmar senha' className='mb-6' />
 
         <Button
-          className='bg-requester-500 mt-auto'
+          className='bg-requester-500 mt-auto md:mt-0'
           onPress={() => {
             navigation.navigate('SignIn')
           }}
         >
           Concluir cadastro
         </Button>
-      </ScrollView>
+      </RelativeScrollView>
     </AuthLayout>
   )
 }

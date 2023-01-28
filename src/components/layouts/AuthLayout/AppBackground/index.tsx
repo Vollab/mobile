@@ -1,6 +1,6 @@
 import { Image } from 'react-native'
 
-import phoneHeight from '@src/utils/Dimensions'
+import { phoneHeight } from '@src/utils/Dimensions'
 
 import bg from '@assets/bg.png'
 import { styled } from 'nativewind'

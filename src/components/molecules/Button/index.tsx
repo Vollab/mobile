@@ -20,10 +20,18 @@ const Button = ({ children, variant = 'primary', ...props }: IButtonProps) => {
 
   return (
     <Pressable
-      className={`flex align-center justify-center h-14 w-full rounded-full ${bgColors} max-w-[400px]`}
+      className={`
+        flex align-center justify-center h-14 w-full rounded-full max-w-screen-s100
+        ${bgColors}
+      `}
       {...props}
     >
-      <Text className={`font-title text-center text-lg ${textColors}`}>
+      <Text
+        className={`
+          font-title text-center text-lg 
+          ${textColors}
+        `}
+      >
         {children}
       </Text>
     </Pressable>

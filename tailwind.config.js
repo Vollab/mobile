@@ -1,5 +1,6 @@
+const sizes = require('./src/styles/custom/sizes.js')
 const colors = require('./src/styles/custom/colors.js')
-const spacing = require('./src/styles/custom/spacing.js')
+const screens = require('./src/styles/custom/screens.js')
 const fontSize = require('./src/styles/custom/fontSize.js')
 const fontFamily = require('./src/styles/custom/fontFamily.js')
 
@@ -7,11 +8,14 @@ const fontFamily = require('./src/styles/custom/fontFamily.js')
 module.exports = {
   content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    spacing,
     fontSize,
     fontFamily,
+    size: sizes,
     plugins: [],
-    size: spacing,
-    extend: { colors }
+    spacing: sizes,
+    extend: {
+      colors,
+      screens: screens
+    }
   }
 }

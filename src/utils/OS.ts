@@ -1,15 +1,12 @@
+import sizes from '../styles/custom/sizes'
+
 import { Platform } from 'react-native'
 
-import spacing from '@src/styles/custom/spacing'
-
-type TOSRelative = (
-  mobile: string | number,
-  web: string | number
-) => string | number
+type TOSRelative = (mobile: any, web: any) => any
 
 type TOSRelativeSize = (
-  mobile: keyof typeof spacing,
-  web: keyof typeof spacing
+  mobile: keyof typeof sizes,
+  web: keyof typeof sizes
 ) => string | number
 
 export const OSRelative: TOSRelative = (mobile, web) =>

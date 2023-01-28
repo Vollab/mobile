@@ -1,12 +1,14 @@
 import Nav from '../Nav'
 import { AuthLayoutContext } from '../context'
 
-import { KeyboardAvoidingView, View } from 'react-native'
+import { Dimensions, KeyboardAvoidingView, View } from 'react-native'
 import { Platform } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
 
 import RoundedTop from '@src/components/assets/RoundedTop'
+
+import { isMd } from '@src/utils/Dimensions'
 
 import { IAuthLayoutProps } from '..'
 import { styled } from 'nativewind'
@@ -27,7 +29,7 @@ const Footer = ({
 }: IFooterProps) => {
   const { nav } = useContext(AuthLayoutContext)
 
-  const showNav = hideHeader || (nav && Platform.OS === 'web')
+  const showNav = hideHeader || (nav && isMd)
 
   return (
     <>
@@ -37,23 +39,24 @@ const Footer = ({
 
       <View
         className={`
-          relative p-8 z-20 bg-secondary-500 overflow-hidden 
-          w-full
+          w-full relative p-8 z-20 bg-secondary-500 overflow-hidden
           md:w-1/2 md:h-full
+          ${showNav && 'pt-0'}
           ${hideHeader && 'h-full'}
+          border
         `}
         {...props}
       >
-        {showNav && <Nav fill={colors.primary[500]} className='p-0 pb-4' />}
+        {showNav && <Nav fill={colors.primary[500]} className='pb-4 md:py-8' />}
 
         <KeyboardAvoidingView
           enabled={!!keyboardBehavior}
           behavior={keyboardBehavior}
           className={`
-              flex items-center justify-center w-full
-              md:h-full
-              ${hideHeader && 'flex-1'}
-            `}
+            flex items-center justify-center w-full
+            md:flex-1
+            ${hideHeader && 'flex-1'}
+          `}
         >
           {children}
         </KeyboardAvoidingView>

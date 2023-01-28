@@ -1,5 +1,6 @@
 import { ScrollView } from 'react-native'
 
+import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
@@ -12,7 +13,7 @@ import { RootStackScreen } from 'App'
 const CandidateSecondStep = ({
   navigation
 }: RootStackScreen<'CandidateSecondStep'>) => {
-  const { hideHeader, nav, showInfo, removePadding } = useAuthForm()
+  const { hideHeader, nav, showInfo, removePadding } = useAuthForm({})
 
   return (
     <AuthLayout
@@ -23,16 +24,25 @@ const CandidateSecondStep = ({
     >
       {showInfo && (
         <>
-          <Text className='text-xl w-full text-candidate-500'>Quase lá</Text>
+          <Text className='text-xl w-full text-candidate-500 max-w-screen-s100  md:text-center'>
+            Quase lá
+          </Text>
 
-          <Text className='w-full mb-6'>
+          <Text className='w-full mb-6 max-w-screen-s100 md:text-center'>
             Não se preocupe algumas informações poderão ser alteradas
             posteriormente
           </Text>
         </>
       )}
 
-      <ScrollView className='w-full'>
+      <RelativeScrollView
+        className='w-full'
+        contentContainerStyle={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
         <Field placeholder='Pequena descrição' className='mb-4' />
         <Field placeholder='Área de atuação' className='mb-4' />
         <Field placeholder='Nível de experiência' className='mb-6' />
@@ -44,7 +54,7 @@ const CandidateSecondStep = ({
         >
           Concluir cadastro
         </Button>
-      </ScrollView>
+      </RelativeScrollView>
     </AuthLayout>
   )
 }

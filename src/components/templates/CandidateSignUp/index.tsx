@@ -1,5 +1,4 @@
-import { ScrollView } from 'react-native'
-
+import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
@@ -8,11 +7,12 @@ import Field from '@src/components/molecules/Field'
 import useAuthForm from '@src/hooks/useAuthForm'
 
 import { RootStackScreen } from 'App'
+import React from 'react'
 
 const CandidateSignUp = ({
   navigation
 }: RootStackScreen<'CandidateSignUp'>) => {
-  const { hideHeader, nav, showInfo, removePadding } = useAuthForm()
+  const { hideHeader, nav, showInfo, removePadding } = useAuthForm({})
 
   return (
     <AuthLayout
@@ -23,15 +23,24 @@ const CandidateSignUp = ({
     >
       {showInfo && (
         <>
-          <Text className='text-xl w-full text-candidate-500'>Candidato</Text>
+          <Text className='w-full text-xl max-w-screen-s100  text-candidate-500 md:text-center'>
+            Candidato
+          </Text>
 
-          <Text className='w-full mb-6'>
+          <Text className='w-full mb-6  max-w-screen-s100  md:text-center'>
             Encontrar voluntários para resolver problemas!
           </Text>
         </>
       )}
 
-      <ScrollView className='w-full'>
+      <RelativeScrollView
+        className='w-full'
+        contentContainerStyle={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
         <Field placeholder='Nome completo' className='mb-4' />
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />
@@ -45,7 +54,7 @@ const CandidateSignUp = ({
         >
           Próximo passo
         </Button>
-      </ScrollView>
+      </RelativeScrollView>
     </AuthLayout>
   )
 }

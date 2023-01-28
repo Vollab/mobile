@@ -1,5 +1,9 @@
 import { Dimensions, StatusBar } from 'react-native'
 
-const phoneHeight = Dimensions.get('screen').height + StatusBar.currentHeight
+import screens from '@src/styles/custom/screens'
 
-export default phoneHeight
+export const phoneHeight =
+  Dimensions.get('screen').height + StatusBar.currentHeight
+
+export const isMd =
+  Dimensions.get('screen').width > Number(screens.xs.split('p')[0])
