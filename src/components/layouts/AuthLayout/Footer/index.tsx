@@ -29,7 +29,7 @@ const Footer = ({
 }: IFooterProps) => {
   const { nav } = useContext(AuthLayoutContext)
 
-  const showNav = hideHeader || (nav && isMd)
+  const showNav = (nav ? isMd() : false) || hideHeader
 
   return (
     <>
@@ -38,20 +38,19 @@ const Footer = ({
       )}
 
       <View
-        className={`
+        className={`  
           w-full relative p-8 z-20 bg-secondary-500 overflow-hidden
           md:w-1/2 md:h-full
           ${showNav && 'pt-0'}
           ${hideHeader && 'h-full'}
-          border
         `}
         {...props}
       >
         {showNav && <Nav fill={colors.primary[500]} className='pb-4 md:py-8' />}
 
         <KeyboardAvoidingView
-          enabled={!!keyboardBehavior}
           behavior={keyboardBehavior}
+          enabled={!!keyboardBehavior}
           className={`
             flex items-center justify-center w-full
             md:flex-1

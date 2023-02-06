@@ -35,14 +35,7 @@ const CandidateSecondStep = ({
         </>
       )}
 
-      <RelativeScrollView
-        className='w-full'
-        contentContainerStyle={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
+      <RelativeScrollView className='w-full'>
         <Field placeholder='Pequena descrição' className='mb-4' />
         <Field placeholder='Área de atuação' className='mb-4' />
         <Field placeholder='Nível de experiência' className='mb-6' />

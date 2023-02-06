@@ -25,14 +25,7 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
       className={removePadding}
       headerTitle='Construa seu portfólio ajudando pessoas'
     >
-      <RelativeScrollView
-        className='w-full'
-        contentContainerStyle={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
+      <RelativeScrollView className='w-full'>
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />
 

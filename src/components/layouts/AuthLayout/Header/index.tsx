@@ -20,7 +20,7 @@ interface IHeaderProps {
 const Header = ({ headerTitle }: IHeaderProps) => {
   const { nav } = useContext(AuthLayoutContext)
 
-  const showNav = nav && !isMd
+  const showNav = nav && !isMd()
 
   return (
     <View

@@ -32,14 +32,7 @@ const RequesterSignUp = ({
         </>
       )}
 
-      <RelativeScrollView
-        className='w-full'
-        contentContainerStyle={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
+      <RelativeScrollView className='w-full'>
         <Field className='mb-4' placeholder='Nome completo' />
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />

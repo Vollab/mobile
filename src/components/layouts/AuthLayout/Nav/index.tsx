@@ -11,7 +11,7 @@ const Nav = ({ fill, ...props }) => {
   const { navigation, nav } = useContext(AuthLayoutContext)
 
   return (
-    <View className='flex w-full py-4' {...props}>
+    <View className='flex w-full py-8' {...props}>
       <TouchableOpacity
         className='h-6 w-4'
         onPress={() => {

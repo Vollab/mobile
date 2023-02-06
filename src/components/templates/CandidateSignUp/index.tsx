@@ -33,14 +33,7 @@ const CandidateSignUp = ({
         </>
       )}
 
-      <RelativeScrollView
-        className='w-full'
-        contentContainerStyle={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
+      <RelativeScrollView className='w-full'>
         <Field placeholder='Nome completo' className='mb-4' />
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />
