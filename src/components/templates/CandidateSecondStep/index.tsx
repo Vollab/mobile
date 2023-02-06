@@ -5,6 +5,7 @@ import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import Field from '@src/components/molecules/Field'
+import Steps from '@src/components/molecules/Steps'
 
 import useAuthForm from '@src/hooks/useAuthForm'
 
@@ -24,6 +25,8 @@ const CandidateSecondStep = ({
     >
       {showInfo && (
         <>
+          <Steps steps={[true, true]} />
+
           <Text className='text-xl w-full text-candidate-500 max-w-screen-s100  md:text-center'>
             Quase lá
           </Text>
@@ -35,7 +38,10 @@ const CandidateSecondStep = ({
         </>
       )}
 
-      <RelativeScrollView className='w-full'>
+      <RelativeScrollView
+        className='w-full'
+        contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
+      >
         <Field placeholder='Pequena descrição' className='mb-4' />
         <Field placeholder='Área de atuação' className='mb-4' />
         <Field placeholder='Nível de experiência' className='mb-6' />

@@ -32,14 +32,17 @@ const RequesterSignUp = ({
         </>
       )}
 
-      <RelativeScrollView className='w-full'>
+      <RelativeScrollView
+        className='w-full'
+        contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
+      >
         <Field className='mb-4' placeholder='Nome completo' />
         <Field placeholder='E-mail' className='mb-4' />
         <Field placeholder='Senha' className='mb-4' />
         <Field placeholder='Confirmar senha' className='mb-6' />
 
         <Button
-          className='bg-requester-500 mt-auto md:mt-0'
+          className='bg-requester-500 md:mt-0'
           onPress={() => {
             navigation.navigate('SignIn')
           }}

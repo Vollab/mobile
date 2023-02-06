@@ -35,7 +35,7 @@ const Header = ({ headerTitle }: IHeaderProps) => {
         <Logo />
 
         {headerTitle && (
-          <Text className='text-secondary-500 text-xl text-center mt-8'>
+          <Text className='text-secondary-500 text-xl text-center font-title mt-8'>
             {headerTitle}
           </Text>
         )}

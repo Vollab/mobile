@@ -10,12 +10,14 @@ import { styled } from 'nativewind'
 
 interface IRelativeScrollViewProps extends ScrollViewProps {
   webWithView?: boolean
+  contentContainerStyle?: Object
 }
 
 const RelativeScrollView = ({
   className,
   children,
   webWithView = false,
+  contentContainerStyle,
   ...props
 }: IRelativeScrollViewProps) =>
   OSRelative(
@@ -24,7 +26,8 @@ const RelativeScrollView = ({
       contentContainerStyle={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        ...contentContainerStyle
       }}
       {...props}
     >

@@ -11,7 +11,7 @@ import { RootStackScreen } from 'App'
 const SignUp = ({ navigation }: RootStackScreen<'SignUp'>) => (
   <AuthLayout nav={{ arrow: true }} navigation={navigation}>
     <View className='max-w-screen-s100 w-full'>
-      <Text className='text-xl text-primary-500 font-semibold'>
+      <Text className='text-xl text-primary-500 font-title text-center'>
         Você precisa de ajuda ou quer ajudar alguém?
       </Text>
 
