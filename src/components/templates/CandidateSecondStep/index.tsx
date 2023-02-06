@@ -1,5 +1,7 @@
 import { ScrollView } from 'react-native'
 
+import colors from '@src/styles/custom/colors'
+
 import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
@@ -7,14 +9,16 @@ import Button from '@src/components/molecules/Button'
 import Field from '@src/components/molecules/Field'
 import Steps from '@src/components/molecules/Steps'
 
-import useAuthForm from '@src/hooks/useAuthForm'
+import useAuthZoom from '@src/hooks/useAuthZoom'
 
 import { RootStackScreen } from 'App'
 
 const CandidateSecondStep = ({
   navigation
 }: RootStackScreen<'CandidateSecondStep'>) => {
-  const { hideHeader, nav, showInfo, removePadding } = useAuthForm({})
+  const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
+    arrowColor: colors.candidate[500]
+  })
 
   return (
     <AuthLayout

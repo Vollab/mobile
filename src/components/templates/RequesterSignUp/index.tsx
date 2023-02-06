@@ -1,17 +1,31 @@
+import colors from '@src/styles/custom/colors'
+
 import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import Field from '@src/components/molecules/Field'
 
-import useAuthForm from '@src/hooks/useAuthForm'
+import useAuthZoom from '@src/hooks/useAuthZoom'
 
 import { RootStackScreen } from 'App'
+
+const RequesterField = ({ ...props }) => (
+  <Field
+    className={`
+      focus:border-requester-500 focus:text-requester-500
+      active:border-requester-600
+    `}
+    {...props}
+  />
+)
 
 const RequesterSignUp = ({
   navigation
 }: RootStackScreen<'RequesterSignUp'>) => {
-  const { hideHeader, nav, showInfo, removePadding } = useAuthForm({})
+  const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
+    arrowColor: colors.requester[500]
+  })
 
   return (
     <AuthLayout
@@ -36,10 +50,10 @@ const RequesterSignUp = ({
         className='w-full'
         contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
       >
-        <Field className='mb-4' placeholder='Nome completo' />
-        <Field placeholder='E-mail' className='mb-4' />
-        <Field placeholder='Senha' className='mb-4' />
-        <Field placeholder='Confirmar senha' className='mb-6' />
+        <RequesterField placeholder='Nome completo' className='mb-4' />
+        <RequesterField placeholder='E-mail' className='mb-4' />
+        <RequesterField placeholder='Senha' className='mb-4' />
+        <RequesterField placeholder='Confirmar senha' className='mb-6' />
 
         <Button
           className='bg-requester-500 md:mt-0'

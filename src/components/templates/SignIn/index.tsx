@@ -1,4 +1,4 @@
-import { TouchableOpacity } from 'react-native'
+import { BackHandler, TouchableOpacity } from 'react-native'
 
 import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
@@ -6,24 +6,45 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import Field from '@src/components/molecules/Field'
 
-import useAuthForm from '@src/hooks/useAuthForm'
+import useAuthZoom from '@src/hooks/useAuthZoom'
+import useKeyboardStatus from '@src/hooks/useKeyboardStatus'
 
+import { useFocusEffect } from '@react-navigation/native'
 import { RootStackScreen } from 'App'
 import Checkbox from 'expo-checkbox'
+import { useCallback } from 'react'
 
 const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
-  const { nav, removePadding } = useAuthForm({
+  const { isKeyboardVisible } = useKeyboardStatus()
+
+  const { nav, removePadding } = useAuthZoom({
     onBackButtonClick: () => {
       navigation.navigate('AuthSelect')
     }
   })
+
+  useFocusEffect(
+    useCallback(() => {
+      const subscription = BackHandler.addEventListener(
+        'hardwareBackPress',
+        () => {
+          navigation.push('AuthSelect')
+          return true
+        }
+      )
+
+      return () => subscription.remove()
+    }, [])
+  )
 
   return (
     <AuthLayout
       nav={nav}
       navigation={navigation}
       className={removePadding}
-      headerTitle='Construa seu portfólio ajudando pessoas'
+      headerTitle={
+        isKeyboardVisible ? '' : 'Construa seu portfólio ajudando pessoas'
+      }
     >
       <RelativeScrollView className='w-full'>
         <Field placeholder='E-mail' className='mb-4' />

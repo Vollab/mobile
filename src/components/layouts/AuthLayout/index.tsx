@@ -15,8 +15,8 @@ export interface IAuthLayoutProps {
   children: ReactNode
   hideHeader?: boolean
   headerTitle?: string
-  nav?: { arrow?: boolean; onArrowClick?: any }
   keyboardBehavior?: 'position' | 'height' | 'padding'
+  nav?: { arrow?: boolean; onArrowClick?: any; color?: string }
   navigation: NativeStackScreenProps<any, any>['navigation']
 }
 
