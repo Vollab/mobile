@@ -57,22 +57,52 @@ const RequesterSignUp = ({
         contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
       >
         <RequesterField
-          control={control}
           name='name'
+          control={control}
           placeholder='Nome completo'
           className='mb-4'
+          rules={{
+            minLength: { message: 'Nome inválido!', value: 3 },
+            required: {
+              message: 'Necessário informar o Nome completo!',
+              value: true
+            },
+            pattern: {
+              message: 'Nome inválido!',
+              value: /^[a-z\u00C0-\u00FF]+(\s([a-z\u00C0-\u00FF])+)+/i
+            },
+            maxLength: {
+              value: 255,
+              message: 'Limite de 255 caracteres excedido.'
+            }
+          }}
         />
 
         <RequesterField
-          control={control}
           name='email'
+          control={control}
           placeholder='E-mail'
           className='mb-4'
+          rules={{
+            maxLength: {
+              value: 255,
+              message: 'Limite máximo de 255 caracteres excedido.'
+            },
+            required: {
+              message: 'Necessário informar o E-mail!',
+              value: true
+            },
+            pattern: {
+              message: 'E-mail inválido!',
+              value:
+                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{1,10}@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+            }
+          }}
         />
 
         <RequesterField
-          control={control}
           name='password'
+          control={control}
           placeholder='Senha'
           className='mb-4'
         />
@@ -87,7 +117,7 @@ const RequesterSignUp = ({
         <Button
           className='bg-requester-500 md:mt-0'
           onPress={() => {
-            handleSubmit(onSubmit)
+            handleSubmit(onSubmit)()
             navigation.navigate('SignIn')
           }}
         >
