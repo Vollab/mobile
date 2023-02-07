@@ -1,7 +1,6 @@
 import '@src/styles'
 
 import AuthSelect from '@src/components/templates/AuthSelect'
-import CandidateSecondStep from '@src/components/templates/CandidateSecondStep'
 import CandidateSignUp from '@src/components/templates/CandidateSignUp'
 import RequesterSignUp from '@src/components/templates/RequesterSignUp'
 import SignIn from '@src/components/templates/SignIn'
@@ -37,7 +36,6 @@ export default function App() {
         <Screen name='SignUp' component={SignUp} />
         <Screen name='RequesterSignUp' component={RequesterSignUp} />
         <Screen name='CandidateSignUp' component={CandidateSignUp} />
-        <Screen name='CandidateSecondStep' component={CandidateSecondStep} />
       </Navigator>
     </NavigationContainer>
   )

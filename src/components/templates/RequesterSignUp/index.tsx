@@ -4,13 +4,14 @@ import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
-import Field from '@src/components/molecules/Field'
+import Field, { IFieldProps } from '@src/components/molecules/Field'
 
 import useAuthZoom from '@src/hooks/useAuthZoom'
 
 import { RootStackScreen } from 'App'
+import { useForm } from 'react-hook-form'
 
-const RequesterField = ({ ...props }) => (
+const RequesterField = ({ ...props }: IFieldProps) => (
   <Field
     className={`
       focus:border-requester-500 focus:text-requester-500
@@ -23,9 +24,14 @@ const RequesterField = ({ ...props }) => (
 const RequesterSignUp = ({
   navigation
 }: RootStackScreen<'RequesterSignUp'>) => {
+  const { control, handleSubmit } = useForm({
+    defaultValues: { email: '', password: '', name: '', confirmPassword: '' }
+  })
   const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
     arrowColor: colors.requester[500]
   })
+
+  const onSubmit = data => console.log(data)
 
   return (
     <AuthLayout
@@ -50,14 +56,38 @@ const RequesterSignUp = ({
         className='w-full'
         contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
       >
-        <RequesterField placeholder='Nome completo' className='mb-4' />
-        <RequesterField placeholder='E-mail' className='mb-4' />
-        <RequesterField placeholder='Senha' className='mb-4' />
-        <RequesterField placeholder='Confirmar senha' className='mb-6' />
+        <RequesterField
+          control={control}
+          name='name'
+          placeholder='Nome completo'
+          className='mb-4'
+        />
+
+        <RequesterField
+          control={control}
+          name='email'
+          placeholder='E-mail'
+          className='mb-4'
+        />
+
+        <RequesterField
+          control={control}
+          name='password'
+          placeholder='Senha'
+          className='mb-4'
+        />
+
+        <RequesterField
+          control={control}
+          name='confirmPassword'
+          placeholder='Confirmar senha'
+          className='mb-6'
+        />
 
         <Button
           className='bg-requester-500 md:mt-0'
           onPress={() => {
+            handleSubmit(onSubmit)
             navigation.navigate('SignIn')
           }}
         >
