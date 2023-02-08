@@ -6,9 +6,9 @@ import UserIcon from '@src/components/assets/UserIcon'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 
-import { RootStackScreen } from 'App'
+import { TRootStackScreen } from 'App'
 
-const SignUp = ({ navigation }: RootStackScreen<'SignUp'>) => {
+const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
   return (
     <AuthLayout nav={{ arrow: true }} navigation={navigation}>
       <View tw='max-w-screen-s100 w-full'>

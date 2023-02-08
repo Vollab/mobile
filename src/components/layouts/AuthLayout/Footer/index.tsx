@@ -1,14 +1,13 @@
 import Nav from '../Nav'
 import { AuthLayoutContext } from '../context'
 
-import { Dimensions, KeyboardAvoidingView, View } from 'react-native'
-import { Platform } from 'react-native'
+import { KeyboardAvoidingView, View } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
 
 import RoundedTop from '@src/components/assets/RoundedTop'
 
-import { isMd } from '@src/utils/Dimensions'
+import { isMd } from '@src/utils/dimensions'
 
 import { IAuthLayoutProps } from '..'
 import { styled } from 'nativewind'

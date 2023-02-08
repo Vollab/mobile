@@ -9,7 +9,12 @@ interface IButtonProps extends PressableProps {
   variant?: 'primary' | 'secondary'
 }
 
-const Button = ({ children, variant = 'primary', ...props }: IButtonProps) => {
+const Button = ({
+  children,
+  variant = 'primary',
+
+  ...props
+}: IButtonProps) => {
   const bgColors =
     variant === 'primary'
       ? 'bg-primary'
@@ -21,16 +26,17 @@ const Button = ({ children, variant = 'primary', ...props }: IButtonProps) => {
   return (
     <Pressable
       tw={`
-        flex align-center justify-center h-14 w-full rounded-full max-w-screen-s100
+        flex align-center h-14 justify-center w-full rounded-full max-w-screen-s100
         ${bgColors}
       `}
       {...props}
     >
       <Text
         tw={`
-          font-title text-center text-lg 
+          font-title text-center 
           ${textColors}
         `}
+        size='lg'
       >
         {children}
       </Text>

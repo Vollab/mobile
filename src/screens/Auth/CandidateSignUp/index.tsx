@@ -9,13 +9,13 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 
 import useAuthZoom from '@src/hooks/useAuthZoom'
 
-import { RootStackScreen } from 'App'
+import { TRootStackScreen } from 'App'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 const CandidateSignUp = ({
   navigation
-}: RootStackScreen<'CandidateSignUp'>) => {
+}: TRootStackScreen<'CandidateSignUp'>) => {
   const [step, setStep] = useState(1)
 
   const { control, handleSubmit } = useForm({
@@ -55,7 +55,6 @@ const CandidateSignUp = ({
         setStep={setStep}
         control={control}
         showInfo={showInfo}
-        hideHeader={hideHeader}
         onSubmit={() => {
           handleSubmit(onSubmit)()
           navigation.navigate('SignIn')
@@ -73,8 +72,11 @@ const CandidateSignUp = ({
         arrow: nav.arrow,
         color: nav.color,
         onArrowClick: () => {
-          if (step === 1) navigation.goBack()
-          else hideHeader ? Keyboard.dismiss() : setStep(prev => prev - 1)
+          if (step === 1) {
+            navigation.goBack()
+          } else {
+            hideHeader ? Keyboard.dismiss() : setStep(prev => prev - 1)
+          }
         }
       }}
     >

@@ -10,7 +10,7 @@ import { styled } from 'nativewind'
 
 interface IRelativeScrollViewProps extends ScrollViewProps {
   webWithView?: boolean
-  contentContainerStyle?: Object
+  contentContainerStyle?: object
 }
 
 const RelativeScrollView = ({

@@ -2,9 +2,9 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import GoogleButton from '@src/components/molecules/GoogleButton'
 
-import { RootStackScreen } from 'App'
+import { TRootStackScreen } from 'App'
 
-const AuthSelect = ({ navigation }: RootStackScreen<'AuthSelect'>) => (
+const AuthSelect = ({ navigation }: TRootStackScreen<'AuthSelect'>) => (
   <AuthLayout
     navigation={navigation}
     headerTitle='O melhor lugar para construir portfólios ou buscar por voluntários'

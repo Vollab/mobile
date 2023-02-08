@@ -10,7 +10,7 @@ import sizes from '@src/styles/custom/sizes'
 import ArrowIcon from '@src/components/assets/ArrowIcon'
 import CheckIcon from '@src/components/assets/CheckIcon'
 
-import { pxToNumber } from '@src/utils/Px'
+import { pxToNumber } from '@src/utils/px'
 
 import { styled } from 'nativewind'
 import { useState } from 'react'

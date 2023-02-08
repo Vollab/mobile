@@ -15,9 +15,6 @@ module.exports = {
     plugins: [],
     spacing: sizes,
     borderRadius: radius,
-    extend: {
-      colors,
-      screens: screens
-    }
+    extend: { colors, screens: screens }
   }
 }

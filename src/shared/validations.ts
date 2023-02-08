@@ -31,7 +31,8 @@ export const passwordValidation: ControllerProps['rules'] = {
     message: 'Limite máximo de 255 caracteres excedido!'
   },
   pattern: {
-    message: `Senha muito fraca!\nA senha deve conter: \n\n▸ Símbolo \n▸ Número \n▸ Letra minúscula \n▸ Letra maiúscula`,
+    message:
+      'Senha muito fraca!\nA senha deve conter: \n\n▸ Símbolo \n▸ Número \n▸ Letra minúscula \n▸ Letra maiúscula',
     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})$/
   }
 }

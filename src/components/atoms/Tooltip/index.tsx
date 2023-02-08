@@ -5,11 +5,11 @@ import {
 import { styled } from 'nativewind'
 import { ReactNode, useState } from 'react'
 
-interface TooltipProps extends RNETooltipsProps {
+interface ITooltipProps extends RNETooltipsProps {
   children: ReactNode
 }
 
-const Tooltip = ({ ...props }: TooltipProps) => {
+const Tooltip = ({ ...props }: ITooltipProps) => {
   const [open, setOpen] = useState(false)
 
   return (

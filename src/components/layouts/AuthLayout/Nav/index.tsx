@@ -7,13 +7,17 @@ import ArrowIcon from '@src/components/assets/ArrowIcon'
 import { styled } from 'nativewind'
 import React, { useContext } from 'react'
 
-const Nav = ({ fill, ...props }) => {
+interface INavProps {
+  fill: string
+}
+
+const Nav = ({ fill, ...props }: INavProps) => {
   const { navigation, nav } = useContext(AuthLayoutContext)
 
   return (
-    <View tw='flex w-full py-8 ' {...props}>
+    <View tw='flex w-full pt-8 border' {...props}>
       <TouchableOpacity
-        tw='h-6 w-4 flex items-center justify-center p-4 -translate-x-2'
+        tw='h-6 w-4 flex items-center justify-center p-4 -translate-x-2 '
         onPress={() => {
           nav.onArrowClick ? nav.onArrowClick() : navigation.goBack()
         }}

@@ -13,7 +13,7 @@ import AlertIcon from '@src/components/assets/AlertIcon'
 import Text from '@src/components/atoms/Text'
 import Tooltip from '@src/components/atoms/Tooltip'
 
-import { pxToNumber } from '@src/utils/Px'
+import { pxToNumber } from '@src/utils/px'
 
 import { styled } from 'nativewind'
 import React, { useState } from 'react'
@@ -24,15 +24,12 @@ export interface IFieldProps extends TextInputProps {
   theme?: keyof typeof colors
   name: ControllerProps['name']
   rules?: ControllerProps['rules']
-  tooltip?: { width?: number; height?: number }
 }
 
 const Field = ({
   name,
   rules,
   control,
-  tooltip,
-  className,
   placeholder,
   secureTextEntry,
   theme = 'primary',
@@ -93,7 +90,7 @@ const Field = ({
                 }}
                 popover={
                   <Text
-                    tw='text-secondary-500 text-base'
+                    tw='text-secondary-500'
                     onLayout={e => {
                       setPopoverSize({
                         width: e.nativeEvent.layout.width,

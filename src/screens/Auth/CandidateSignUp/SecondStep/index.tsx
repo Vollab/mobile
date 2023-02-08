@@ -7,8 +7,21 @@ import Dropdown from '@src/components/molecules/Select'
 import Steps from '@src/components/molecules/Steps'
 
 import { useState } from 'react'
+import { ControllerProps } from 'react-hook-form'
 
-const SecondStep = ({ control, hideHeader, showInfo, onSubmit, setStep }) => {
+interface ISecondStepProps {
+  showInfo: boolean
+  setStep: any
+  onSubmit: () => void
+  control: ControllerProps<any>['control']
+}
+
+const SecondStep = ({
+  control,
+  showInfo,
+  onSubmit,
+  setStep
+}: ISecondStepProps) => {
   const [experience, setExperience] = useState(null)
   const [occupation, setOccupation] = useState(null)
 
@@ -23,7 +36,10 @@ const SecondStep = ({ control, hideHeader, showInfo, onSubmit, setStep }) => {
             ]}
           />
 
-          <Text tw='text-xl w-full text-candidate-500 max-w-screen-s100  md:text-center'>
+          <Text
+            tw='w-full text-candidate-500 max-w-screen-s100  md:text-center'
+            size='xl'
+          >
             Quase lá
           </Text>
 

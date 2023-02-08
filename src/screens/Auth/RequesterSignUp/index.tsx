@@ -14,7 +14,7 @@ import {
   fullNameValidation,
   passwordValidation
 } from '@src/shared/validations'
-import { RootStackScreen } from 'App'
+import { TRootStackScreen } from 'App'
 import { useForm } from 'react-hook-form'
 
 interface IRequesterSignUpRequest {
@@ -29,7 +29,7 @@ type TRequesterSignUpForm = IRequesterSignUpRequest & {
 
 const RequesterSignUp = ({
   navigation
-}: RootStackScreen<'RequesterSignUp'>) => {
+}: TRootStackScreen<'RequesterSignUp'>) => {
   const { control, handleSubmit, setError } = useForm<TRequesterSignUpForm>({
     defaultValues: {
       email: '',
@@ -54,7 +54,10 @@ const RequesterSignUp = ({
     >
       {showInfo && (
         <>
-          <Text tw='text-xl w-full  max-w-screen-s100 text-requester-500 md:text-center'>
+          <Text
+            size='xl'
+            tw='w-full max-w-screen-s100 text-requester-500 md:text-center'
+          >
             Solicitante
           </Text>
 

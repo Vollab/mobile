@@ -13,7 +13,7 @@ import useKeyboardStatus from '@src/hooks/useKeyboardStatus'
 
 import { useFocusEffect } from '@react-navigation/native'
 import { emailValidation } from '@src/shared/validations'
-import { RootStackScreen } from 'App'
+import { TRootStackScreen } from 'App'
 import Checkbox from 'expo-checkbox'
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -26,7 +26,7 @@ interface ISignInRequest {
 
 type TSignInForm = Omit<ISignInRequest, 'remember'>
 
-const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
+const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
   const [remember, setRemember] = useState(false)
   const { isKeyboardVisible } = useKeyboardStatus()
   const { control, handleSubmit } = useForm<TSignInForm>({
@@ -54,7 +54,7 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
       )
 
       return () => subscription.remove()
-    }, [])
+    }, [navigation])
   )
 
   return (
@@ -99,7 +99,7 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
           />
 
           <TouchableOpacity onPress={() => setRemember(prev => !prev)}>
-            <Text tw='text-sm'>Lembrar senha</Text>
+            <Text size='sm'>Lembrar senha</Text>
           </TouchableOpacity>
         </View>
 
@@ -108,7 +108,7 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
         </Button>
 
         <TouchableOpacity tw='mb-3 flex flex-row justify-center'>
-          <Text tw='text-sm'>Esqueci minha senha</Text>
+          <Text size='sm'>Esqueci minha senha</Text>
         </TouchableOpacity>
       </RelativeScrollView>
     </AuthLayout>

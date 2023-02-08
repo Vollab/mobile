@@ -8,7 +8,7 @@ import colors from '@src/styles/custom/colors'
 import Logo from '@src/components/assets/Logo'
 import Text from '@src/components/atoms/Text'
 
-import { isMd } from '@src/utils/Dimensions'
+import { isMd } from '@src/utils/dimensions'
 
 import { IAuthLayoutProps } from '..'
 import { useContext } from 'react'
@@ -25,17 +25,18 @@ const Header = ({ headerTitle }: IHeaderProps) => {
   return (
     <View
       tw={`
-        flex flex-1 w-full p-8 
+      border
+        flex flex-1 w-full px-8 
         ${showNav && 'pt-0'}
       `}
     >
       {showNav && <Nav fill={colors.secondary[500]} />}
 
-      <View tw='flex flex-1 items-center justify-center w-full '>
-        <Logo />
+      <View tw='flex flex-1 items-center justify-center w-full border'>
+        <Logo tw='border' />
 
         {headerTitle && (
-          <Text tw='text-secondary-500 text-xl text-center font-title mt-8'>
+          <Text tw='text-secondary-500 text-center font-title mt-8' size='xl'>
             {headerTitle}
           </Text>
         )}

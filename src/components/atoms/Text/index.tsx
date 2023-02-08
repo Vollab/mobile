@@ -7,13 +7,17 @@ import {
 } from '@expo-google-fonts/open-sans'
 import { Text as RNText, TextProps as RNTextProps } from 'react-native'
 
+import fontSize from '@src/styles/custom/fontSize'
+
+import { moderateScale } from '@src/utils/scale'
+
 import { styled } from 'nativewind'
 
 interface ITextProps extends RNTextProps {
-  variant?: 'regular' | 'semibold'
+  size?: keyof typeof fontSize
 }
 
-const Text = ({ children, variant = 'regular', ...props }: ITextProps) => {
+const Text = ({ style, children, size = 'base', ...props }: ITextProps) => {
   const [fontsLoaded] = useFonts({
     OpenSans_400Regular,
     OpenSans_400Regular_Italic,
@@ -21,10 +25,16 @@ const Text = ({ children, variant = 'regular', ...props }: ITextProps) => {
     OpenSans_600SemiBold_Italic
   })
 
-  if (!fontsLoaded) return null
+  if (!fontsLoaded) {
+    return null
+  }
 
   return (
-    <RNText tw='font-body text-base' {...props}>
+    <RNText
+      tw='font-body'
+      style={[{ fontSize: moderateScale(fontSize[size][0]) }, style]}
+      {...props}
+    >
       {children}
     </RNText>
   )

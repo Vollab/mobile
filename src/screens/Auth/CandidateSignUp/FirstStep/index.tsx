@@ -10,18 +10,34 @@ import {
   fullNameValidation,
   passwordValidation
 } from '@src/shared/validations'
+import { ControllerProps } from 'react-hook-form'
 
-const FirstStep = ({ control, hideHeader, showInfo, onSubmit }) => (
+interface IFirstStepProps {
+  showInfo: boolean
+  hideHeader: boolean
+  onSubmit: () => void
+  control: ControllerProps<any>['control']
+}
+
+const FirstStep = ({
+  control,
+  hideHeader,
+  showInfo,
+  onSubmit
+}: IFirstStepProps) => (
   <>
     {showInfo && (
       <>
         <Steps steps={[{ active: true }, { active: false }]} />
 
-        <Text tw='w-full text-xl max-w-screen-s100  text-candidate-500 md:text-center'>
+        <Text
+          size='xl'
+          tw='w-full max-w-screen-s100  text-candidate-500 md:text-center'
+        >
           Candidato
         </Text>
 
-        <Text tw='w-full mb-6  max-w-screen-s100  md:text-center'>
+        <Text tw='w-full mb-6  max-w-screen-s100 md:text-center'>
           Encontrar voluntários para resolver problemas!
         </Text>
       </>
