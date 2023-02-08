@@ -1,6 +1,8 @@
 import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
 
+import { Keyboard } from 'react-native'
+
 import colors from '@src/styles/custom/colors'
 
 import AuthLayout from '@src/components/layouts/AuthLayout'
@@ -17,11 +19,12 @@ const CandidateSignUp = ({
   const [step, setStep] = useState(1)
 
   const { control, handleSubmit } = useForm({
+    mode: 'onBlur',
     defaultValues: {
-      name: '',
       email: '',
       password: '',
       small_bio: '',
+      full_name: '',
       occupation: '',
       experience: '',
       confirmPassword: ''
@@ -33,7 +36,6 @@ const CandidateSignUp = ({
   })
 
   const onSubmit = data => {
-    console.log('test')
     console.log(data)
   }
 
@@ -64,10 +66,17 @@ const CandidateSignUp = ({
 
   return (
     <AuthLayout
-      nav={nav}
       className={removePadding}
       navigation={navigation}
       hideHeader={hideHeader}
+      nav={{
+        arrow: nav.arrow,
+        color: nav.color,
+        onArrowClick: () => {
+          if (step === 1) navigation.goBack()
+          else hideHeader ? Keyboard.dismiss() : setStep(prev => prev - 1)
+        }
+      }}
     >
       {steps[step]}
     </AuthLayout>

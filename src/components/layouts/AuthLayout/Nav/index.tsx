@@ -11,9 +11,9 @@ const Nav = ({ fill, ...props }) => {
   const { navigation, nav } = useContext(AuthLayoutContext)
 
   return (
-    <View className='flex w-full py-8' {...props}>
+    <View className='flex w-full py-8 ' {...props}>
       <TouchableOpacity
-        className='h-6 w-4'
+        className='h-6 w-4 flex items-center justify-center p-4 -translate-x-2'
         onPress={() => {
           nav.onArrowClick ? nav.onArrowClick() : navigation.goBack()
         }}

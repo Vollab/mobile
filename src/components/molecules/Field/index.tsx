@@ -1,4 +1,10 @@
-import { TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
+import {
+  Dimensions,
+  TextInput,
+  TextInputProps,
+  TouchableOpacity,
+  View
+} from 'react-native'
 
 import colors from '@src/styles/custom/colors'
 import sizes from '@src/styles/custom/sizes'
@@ -15,25 +21,38 @@ import { Control, Controller, ControllerProps } from 'react-hook-form'
 
 export interface IFieldProps extends TextInputProps {
   control: Control<any>
+  theme?: keyof typeof colors
   name: ControllerProps['name']
-  tooltip?: {
-    width?: number
-    height?: number
-  }
   rules?: ControllerProps['rules']
+  tooltip?: { width?: number; height?: number }
 }
 
 const Field = ({
   name,
   rules,
   control,
+  tooltip,
   className,
   placeholder,
-  tooltip,
+  secureTextEntry,
+  theme = 'primary',
   ...props
 }: IFieldProps) => {
+  const [isFocused, setIsFocused] = useState(false)
   const [openTooltip, setOpenTooltip] = useState(false)
   const [popoverSize, setPopoverSize] = useState({ width: 1000, height: 1000 })
+
+  const bestTooltipWidth = popoverSize.width + pxToNumber(sizes[4])
+  const screenSize = Dimensions.get('screen').width - pxToNumber(sizes[10]) * 2
+
+  const tooltipWidth =
+    bestTooltipWidth < screenSize ? bestTooltipWidth : screenSize
+
+  const borderColor = {
+    error: 'border-error-500',
+    default: 'border-tertiary-500',
+    focused: `border-${theme}-500`
+  }
 
   return (
     <Controller
@@ -46,13 +65,11 @@ const Field = ({
       }) => (
         <View
           className={`
-          h-15 w-full border rounded-3xl max-w-screen-s100 flex flex-row items-center justify-center
-          ${error ? 'border-error-500' : 'border-tertiary-400'}
+            h-15 w-full border rounded-3xl max-w-screen-s100 flex flex-row items-center justify-center
 
-          placeholder:text-tertiary-400 text-primary-500      
-          active:border-primary-600
-          focus:border-primary-500
-        `}
+            ${isFocused ? borderColor.focused : borderColor.default}
+            ${error && borderColor.error}
+          `}
           {...props}
         >
           {error?.message && (
@@ -63,9 +80,10 @@ const Field = ({
               }}
             >
               <Tooltip
+                width={tooltipWidth}
                 visible={openTooltip}
+                containerStyle={{ padding: 0 }}
                 backgroundColor={colors.error[500]}
-                width={popoverSize.width + pxToNumber(sizes[4])}
                 height={popoverSize.height + pxToNumber(sizes[4])}
                 onOpen={() => {
                   setOpenTooltip(true)
@@ -73,7 +91,6 @@ const Field = ({
                 onClose={() => {
                   setOpenTooltip(false)
                 }}
-                containerStyle={{ padding: 0 }}
                 popover={
                   <Text
                     className='text-secondary-500 text-base'
@@ -96,10 +113,21 @@ const Field = ({
           <TextInput
             ref={ref}
             value={value}
-            onBlur={onBlur}
-            className='flex-1 h-full rounded-r-3xl px-4'
             onChangeText={onChange}
             placeholder={placeholder}
+            secureTextEntry={secureTextEntry}
+            onFocus={() => {
+              setIsFocused(true)
+            }}
+            onBlur={() => {
+              onBlur()
+              setIsFocused(false)
+            }}
+            className={`
+              flex-1 h-full px-4 rounded-3xl placeholder:text-tertiary-400
+              text-${theme}-500
+              ${error && 'rounded-l-none ml-2 pl-2'}
+            `}
           />
         </View>
       )}

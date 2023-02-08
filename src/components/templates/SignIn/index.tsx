@@ -12,6 +12,7 @@ import useAuthZoom from '@src/hooks/useAuthZoom'
 import useKeyboardStatus from '@src/hooks/useKeyboardStatus'
 
 import { useFocusEffect } from '@react-navigation/native'
+import { emailValidation } from '@src/shared/validations'
 import { RootStackScreen } from 'App'
 import Checkbox from 'expo-checkbox'
 import { useCallback, useState } from 'react'
@@ -71,21 +72,7 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
           name='email'
           control={control}
           placeholder='E-mail'
-          rules={{
-            maxLength: {
-              value: 255,
-              message: 'Limite máximo de 255 caracteres excedido.'
-            },
-            required: {
-              message: 'Necessário informar o E-mail!',
-              value: true
-            },
-            pattern: {
-              message: 'E-mail inválido!',
-              value:
-                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{1,10}@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-            }
-          }}
+          rules={emailValidation}
         />
 
         <Field
@@ -93,10 +80,11 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
           className='mb-4'
           control={control}
           placeholder='Senha'
+          secureTextEntry={true}
           rules={{
             maxLength: {
               value: 255,
-              message: 'Limite máximo de 255 caracteres excedido.'
+              message: 'Limite máximo de 255 caracteres excedido!'
             },
             required: { value: true, message: 'Necessário informar a Senha!' }
           }}

@@ -4,28 +4,40 @@ import RelativeScrollView from '@src/components/atoms/RelativeScrollView'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
-import Field, { IFieldProps } from '@src/components/molecules/Field'
+import Field from '@src/components/molecules/Field'
 
 import useAuthZoom from '@src/hooks/useAuthZoom'
 
+import {
+  confirmPasswordValidation,
+  emailValidation,
+  fullNameValidation,
+  passwordValidation
+} from '@src/shared/validations'
 import { RootStackScreen } from 'App'
 import { useForm } from 'react-hook-form'
 
-const RequesterField = ({ ...props }: IFieldProps) => (
-  <Field
-    className={`
-      focus:border-requester-500 focus:text-requester-500
-      active:border-requester-600
-    `}
-    {...props}
-  />
-)
+interface IRequesterSignUpRequest {
+  email: string
+  password: string
+  full_name: string
+}
+
+type TRequesterSignUpForm = IRequesterSignUpRequest & {
+  confirmPassword: string
+}
 
 const RequesterSignUp = ({
   navigation
 }: RootStackScreen<'RequesterSignUp'>) => {
-  const { control, handleSubmit } = useForm({
-    defaultValues: { email: '', password: '', name: '', confirmPassword: '' }
+  const { control, handleSubmit, setError } = useForm<TRequesterSignUpForm>({
+    defaultValues: {
+      email: '',
+      password: '',
+      full_name: '',
+      confirmPassword: ''
+    },
+    mode: 'onBlur'
   })
   const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
     arrowColor: colors.requester[500]
@@ -53,64 +65,44 @@ const RequesterSignUp = ({
       )}
 
       <RelativeScrollView
-        className='w-full'
         contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
+        className='w-full'
       >
-        <RequesterField
+        <Field
           name='name'
+          theme='requester'
           control={control}
           placeholder='Nome completo'
+          rules={fullNameValidation}
           className='mb-4'
-          rules={{
-            minLength: { message: 'Nome inválido!', value: 3 },
-            required: {
-              message: 'Necessário informar o Nome completo!',
-              value: true
-            },
-            pattern: {
-              message: 'Nome inválido!',
-              value: /^[a-z\u00C0-\u00FF]+(\s([a-z\u00C0-\u00FF])+)+/i
-            },
-            maxLength: {
-              value: 255,
-              message: 'Limite de 255 caracteres excedido.'
-            }
-          }}
         />
 
-        <RequesterField
+        <Field
           name='email'
+          theme='requester'
           control={control}
           placeholder='E-mail'
+          rules={emailValidation}
           className='mb-4'
-          rules={{
-            maxLength: {
-              value: 255,
-              message: 'Limite máximo de 255 caracteres excedido.'
-            },
-            required: {
-              message: 'Necessário informar o E-mail!',
-              value: true
-            },
-            pattern: {
-              message: 'E-mail inválido!',
-              value:
-                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]{1,10}@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-            }
-          }}
         />
 
-        <RequesterField
+        <Field
           name='password'
+          theme='requester'
           control={control}
           placeholder='Senha'
+          secureTextEntry={true}
+          rules={passwordValidation}
           className='mb-4'
         />
 
-        <RequesterField
+        <Field
           control={control}
+          theme='requester'
+          secureTextEntry={true}
           name='confirmPassword'
           placeholder='Confirmar senha'
+          rules={confirmPasswordValidation}
           className='mb-6'
         />
 
