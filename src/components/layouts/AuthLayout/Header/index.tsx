@@ -25,15 +25,14 @@ const Header = ({ headerTitle }: IHeaderProps) => {
   return (
     <View
       tw={`
-      border
         flex flex-1 w-full px-8 
         ${showNav && 'pt-0'}
       `}
     >
       {showNav && <Nav fill={colors.secondary[500]} />}
 
-      <View tw='flex flex-1 items-center justify-center w-full border'>
-        <Logo tw='border' />
+      <View tw='flex flex-1 items-center justify-center w-full '>
+        <Logo />
 
         {headerTitle && (
           <Text tw='text-secondary-500 text-center font-title mt-8' size='xl'>

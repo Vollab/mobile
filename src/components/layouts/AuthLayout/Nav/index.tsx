@@ -15,7 +15,7 @@ const Nav = ({ fill, ...props }: INavProps) => {
   const { navigation, nav } = useContext(AuthLayoutContext)
 
   return (
-    <View tw='flex w-full pt-8 border' {...props}>
+    <View tw='flex w-full pt-8' {...props}>
       <TouchableOpacity
         tw='h-6 w-4 flex items-center justify-center p-4 -translate-x-2 '
         onPress={() => {
