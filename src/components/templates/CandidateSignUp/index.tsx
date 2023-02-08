@@ -66,7 +66,7 @@ const CandidateSignUp = ({
 
   return (
     <AuthLayout
-      className={removePadding}
+      tw={removePadding}
       navigation={navigation}
       hideHeader={hideHeader}
       nav={{

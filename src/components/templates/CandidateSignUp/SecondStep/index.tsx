@@ -23,18 +23,18 @@ const SecondStep = ({ control, hideHeader, showInfo, onSubmit, setStep }) => {
             ]}
           />
 
-          <Text className='text-xl w-full text-candidate-500 max-w-screen-s100  md:text-center'>
+          <Text tw='text-xl w-full text-candidate-500 max-w-screen-s100  md:text-center'>
             Quase lá
           </Text>
 
-          <Text className='w-full mb-6 max-w-screen-s100 md:text-center'>
+          <Text tw='w-full mb-6 max-w-screen-s100 md:text-center'>
             Não se preocupe algumas informações poderão ser alteradas
             posteriormente
           </Text>
         </>
       )}
 
-      <View className='w-full'>
+      <View tw='w-full'>
         <Field
           name='small_bio'
           control={control}
@@ -50,7 +50,7 @@ const SecondStep = ({ control, hideHeader, showInfo, onSubmit, setStep }) => {
               message: 'Texto contêm caracteres inválidos!'
             }
           }}
-          className='mb-4'
+          tw='mb-4'
         />
 
         <Dropdown
@@ -63,7 +63,7 @@ const SecondStep = ({ control, hideHeader, showInfo, onSubmit, setStep }) => {
             { label: 'Desenvolvedor Front-end', value: 'frontend' },
             { label: 'Desenvolvedor Full-stack', value: 'fullstack' }
           ]}
-          className='mb-6'
+          tw='mb-6'
         />
 
         <Dropdown
@@ -76,10 +76,10 @@ const SecondStep = ({ control, hideHeader, showInfo, onSubmit, setStep }) => {
             { label: 'Intermediário', value: 'intermediary' },
             { label: 'Avançado', value: 'advanced' }
           ]}
-          className='mb-6'
+          tw='mb-6'
         />
 
-        <Button className='bg-candidate-500' onPress={onSubmit}>
+        <Button tw='bg-candidate-500' onPress={onSubmit}>
           Concluir cadastro
         </Button>
       </View>

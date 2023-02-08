@@ -64,7 +64,7 @@ const Field = ({
         field: { onChange, onBlur, value, ref }
       }) => (
         <View
-          className={`
+          tw={`
             h-15 w-full border rounded-3xl max-w-screen-s100 flex flex-row items-center justify-center
 
             ${isFocused ? borderColor.focused : borderColor.default}
@@ -74,7 +74,7 @@ const Field = ({
         >
           {error?.message && (
             <TouchableOpacity
-              className='h-full pl-4 flex justify-center rounded-l-3xl'
+              tw='h-full pl-4 flex justify-center rounded-l-3xl'
               onPress={() => {
                 setOpenTooltip(prev => !prev)
               }}
@@ -93,7 +93,7 @@ const Field = ({
                 }}
                 popover={
                   <Text
-                    className='text-secondary-500 text-base'
+                    tw='text-secondary-500 text-base'
                     onLayout={e => {
                       setPopoverSize({
                         width: e.nativeEvent.layout.width,
@@ -105,7 +105,7 @@ const Field = ({
                   </Text>
                 }
               >
-                <AlertIcon fill={colors.error[500]} className='h-6 w-6' />
+                <AlertIcon fill={colors.error[500]} tw='h-6 w-6' />
               </Tooltip>
             </TouchableOpacity>
           )}
@@ -123,7 +123,7 @@ const Field = ({
               onBlur()
               setIsFocused(false)
             }}
-            className={`
+            tw={`
               flex-1 h-full px-4 rounded-3xl placeholder:text-tertiary-400
               text-${theme}-500
               ${error && 'rounded-l-none ml-2 pl-2'}

@@ -7,17 +7,17 @@ interface IStepsProps {
 }
 
 const Steps = ({ steps, ...props }: IStepsProps) => (
-  <View className='flex flex-row mb-6' {...props}>
+  <View tw='flex flex-row mb-6' {...props}>
     {steps.map(({ active, onPress }, index) =>
       active ? (
         <TouchableOpacity
-          className='rounded-full w-4 h-4 bg-candidate-500 mr-4'
+          tw='rounded-full w-4 h-4 bg-candidate-500 mr-4'
           key={index}
           onPress={onPress}
         />
       ) : (
         <TouchableOpacity
-          className='rounded-full w-4 h-4 border-2 border-candidate-500'
+          tw='rounded-full w-4 h-4 border-2 border-candidate-500'
           key={index}
           onPress={onPress}
         />

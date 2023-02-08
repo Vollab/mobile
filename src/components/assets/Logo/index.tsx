@@ -4,7 +4,7 @@ import Svg, { Path } from 'react-native-svg'
 import { styled } from 'nativewind'
 
 const Logo = ({ ...props }) => (
-  <View className='w-52 h-18' {...props}>
+  <View tw='w-52 h-18' {...props}>
     <Svg viewBox='0 0 657 225' fill='none'>
       <Path
         fill='#fff'

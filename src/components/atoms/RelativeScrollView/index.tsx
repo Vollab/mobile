@@ -22,7 +22,7 @@ const RelativeScrollView = ({
 }: IRelativeScrollViewProps) =>
   OSRelative(
     <OriginalScrollView
-      className={className}
+      tw={className}
       contentContainerStyle={{
         display: 'flex',
         alignItems: 'center',
@@ -34,7 +34,7 @@ const RelativeScrollView = ({
       {children}
     </OriginalScrollView>,
     webWithView ? (
-      <View className={className} {...props}>
+      <View tw={className} {...props}>
         {children}
       </View>
     ) : (

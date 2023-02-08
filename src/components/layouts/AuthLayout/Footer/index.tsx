@@ -34,11 +34,11 @@ const Footer = ({
   return (
     <>
       {!hideHeader && (
-        <RoundedTop className='w-full md:hidden' fill={colors.secondary[500]} />
+        <RoundedTop tw='w-full md:hidden' fill={colors.secondary[500]} />
       )}
 
       <View
-        className={`  
+        tw={`  
           w-full relative p-8 z-20 bg-secondary-500 overflow-hidden
           md:w-1/2 md:h-full
           ${showNav && 'pt-0'}
@@ -46,12 +46,12 @@ const Footer = ({
         `}
         {...props}
       >
-        {showNav && <Nav fill={nav.color} className='pb-4 md:py-8' />}
+        {showNav && <Nav fill={nav.color} tw='pb-4 md:py-8' />}
 
         <KeyboardAvoidingView
           behavior={keyboardBehavior}
           enabled={!!keyboardBehavior}
-          className={`
+          tw={`
             flex items-center justify-center w-full
             md:flex-1
             ${hideHeader && 'flex-1'}

@@ -38,7 +38,7 @@ const AuthLayout = ({
 
     <SafeAreaView
       style={{ paddingTop: StatusBar.currentHeight }}
-      className='flex flex-col h-full overflow-hidden md:flex-row-reverse'
+      tw='flex flex-col h-full overflow-hidden md:flex-row-reverse'
     >
       <AppBackground />
 

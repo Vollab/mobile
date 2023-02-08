@@ -56,18 +56,18 @@ const Dropdown = ({
         dropDownContainerStyle={{ borderColor: colors[theme][600] }}
         selectedItemContainerStyle={{ backgroundColor: colors[theme][500] }}
         TickIconComponent={() => (
-          <CheckIcon fill={colors.secondary[500]} className='h-4 w-4' />
+          <CheckIcon fill={colors.secondary[500]} tw='h-4 w-4' />
         )}
         ArrowDownIconComponent={() => (
           <ArrowIcon
             fill={value !== null ? colors[theme][500] : colors.tertiary[400]}
-            className='h-4 w-4 -rotate-90'
+            tw='h-4 w-4 -rotate-90'
           />
         )}
         ArrowUpIconComponent={() => (
           <ArrowIcon
             fill={value !== null ? colors[theme][500] : colors.tertiary[400]}
-            className='h-4 w-4 rotate-90'
+            tw='h-4 w-4 rotate-90'
           />
         )}
         style={{

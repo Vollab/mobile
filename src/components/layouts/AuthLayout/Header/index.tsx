@@ -24,18 +24,18 @@ const Header = ({ headerTitle }: IHeaderProps) => {
 
   return (
     <View
-      className={`
+      tw={`
         flex flex-1 w-full p-8 
         ${showNav && 'pt-0'}
       `}
     >
       {showNav && <Nav fill={colors.secondary[500]} />}
 
-      <View className='flex flex-1 items-center justify-center w-full '>
+      <View tw='flex flex-1 items-center justify-center w-full '>
         <Logo />
 
         {headerTitle && (
-          <Text className='text-secondary-500 text-xl text-center font-title mt-8'>
+          <Text tw='text-secondary-500 text-xl text-center font-title mt-8'>
             {headerTitle}
           </Text>
         )}

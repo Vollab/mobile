@@ -50,15 +50,15 @@ const RequesterSignUp = ({
       nav={nav}
       navigation={navigation}
       hideHeader={hideHeader}
-      className={removePadding}
+      tw={removePadding}
     >
       {showInfo && (
         <>
-          <Text className='text-xl w-full  max-w-screen-s100 text-requester-500 md:text-center'>
+          <Text tw='text-xl w-full  max-w-screen-s100 text-requester-500 md:text-center'>
             Solicitante
           </Text>
 
-          <Text className='w-full max-w-screen-s100 mb-6 md:text-center'>
+          <Text tw='w-full max-w-screen-s100 mb-6 md:text-center'>
             Encontrar voluntários para resolver problemas!
           </Text>
         </>
@@ -66,7 +66,7 @@ const RequesterSignUp = ({
 
       <RelativeScrollView
         contentContainerStyle={{ height: hideHeader ? '100%' : 'auto' }}
-        className='w-full'
+        tw='w-full'
       >
         <Field
           name='name'
@@ -74,7 +74,7 @@ const RequesterSignUp = ({
           control={control}
           placeholder='Nome completo'
           rules={fullNameValidation}
-          className='mb-4'
+          tw='mb-4'
         />
 
         <Field
@@ -83,7 +83,7 @@ const RequesterSignUp = ({
           control={control}
           placeholder='E-mail'
           rules={emailValidation}
-          className='mb-4'
+          tw='mb-4'
         />
 
         <Field
@@ -93,7 +93,7 @@ const RequesterSignUp = ({
           placeholder='Senha'
           secureTextEntry={true}
           rules={passwordValidation}
-          className='mb-4'
+          tw='mb-4'
         />
 
         <Field
@@ -103,11 +103,11 @@ const RequesterSignUp = ({
           name='confirmPassword'
           placeholder='Confirmar senha'
           rules={confirmPasswordValidation}
-          className='mb-6'
+          tw='mb-6'
         />
 
         <Button
-          className='bg-requester-500 md:mt-0'
+          tw='bg-requester-500 md:mt-0'
           onPress={() => {
             handleSubmit(onSubmit)()
             navigation.navigate('SignIn')

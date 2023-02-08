@@ -19,7 +19,7 @@ const AuthSelect = ({ navigation }: RootStackScreen<'AuthSelect'>) => (
     </Button>
 
     <Button
-      className='mt-6'
+      tw='mt-6'
       onPress={() => {
         navigation.navigate('SignUp')
       }}
@@ -27,7 +27,7 @@ const AuthSelect = ({ navigation }: RootStackScreen<'AuthSelect'>) => (
       Cadastrar
     </Button>
 
-    <GoogleButton className='mt-6' />
+    <GoogleButton tw='mt-6' />
   </AuthLayout>
 )
 

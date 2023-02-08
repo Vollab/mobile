@@ -61,14 +61,14 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
     <AuthLayout
       nav={nav}
       navigation={navigation}
-      className={removePadding}
       headerTitle={
         isKeyboardVisible ? '' : 'Construa seu portfólio ajudando pessoas'
       }
+      tw={removePadding}
     >
-      <RelativeScrollView className='w-full'>
+      <RelativeScrollView tw='w-full'>
         <Field
-          className='mb-4'
+          tw='mb-4'
           name='email'
           control={control}
           placeholder='E-mail'
@@ -77,7 +77,7 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
 
         <Field
           name='password'
-          className='mb-4'
+          tw='mb-4'
           control={control}
           placeholder='Senha'
           secureTextEntry={true}
@@ -90,25 +90,25 @@ const SignIn = ({ navigation }: RootStackScreen<'SignIn'>) => {
           }}
         />
 
-        <View className='flex flex-row items-center justify-center mb-4'>
+        <View tw='flex flex-row items-center justify-center mb-4'>
           <Checkbox
-            className='mr-4'
+            tw='mr-4'
             value={remember}
             onValueChange={setRemember}
             color={colors.primary[500]}
           />
 
           <TouchableOpacity onPress={() => setRemember(prev => !prev)}>
-            <Text className='text-sm'>Lembrar senha</Text>
+            <Text tw='text-sm'>Lembrar senha</Text>
           </TouchableOpacity>
         </View>
 
-        <Button className='mb-3' onPress={handleSubmit(onSubmit)}>
+        <Button tw='mb-3' onPress={handleSubmit(onSubmit)}>
           Entrar
         </Button>
 
-        <TouchableOpacity className='mb-3 flex flex-row justify-center'>
-          <Text className='text-sm'>Esqueci minha senha</Text>
+        <TouchableOpacity tw='mb-3 flex flex-row justify-center'>
+          <Text tw='text-sm'>Esqueci minha senha</Text>
         </TouchableOpacity>
       </RelativeScrollView>
     </AuthLayout>
