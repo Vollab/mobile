@@ -14,6 +14,8 @@ import AlertIcon from '@src/components/assets/AlertIcon'
 import Text from '@src/components/atoms/Text'
 import Tooltip from '@src/components/atoms/Tooltip'
 
+import useResponsiveFontSize from '@src/hooks/useResponsiveFontSize'
+
 import { pxToNumber } from '@src/utils/px'
 
 import { styled } from 'nativewind'
@@ -39,6 +41,8 @@ const Field = ({
   const { width } = useWindowDimensions()
   const [isFocused, setIsFocused] = useState(false)
   const [openTooltip, setOpenTooltip] = useState(false)
+  const responsiveFontSize = useResponsiveFontSize('base')
+
   const [popoverSize, setPopoverSize] = useState({ width: 1000, height: 1000 })
 
   const screenSize = width - pxToNumber(sizes[10]) * 2
@@ -124,6 +128,7 @@ const Field = ({
               placeholder:text-tertiary-400${theme}-500
               ${error && 'ml-2 rounded-l-none pl-2'}
             `}
+            style={[responsiveFontSize]}
           />
         </View>
       )}
