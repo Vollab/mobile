@@ -50,7 +50,7 @@ const SecondStep = ({
         </>
       )}
 
-      <View tw='w-full'>
+      <View tw='w-full flex items-center justify-center'>
         <Field
           name='small_bio'
           control={control}
@@ -95,7 +95,7 @@ const SecondStep = ({
           tw='mb-6'
         />
 
-        <Button tw='bg-candidate-500' onPress={onSubmit}>
+        <Button theme='candidate' onPress={onSubmit}>
           Concluir cadastro
         </Button>
       </View>

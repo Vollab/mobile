@@ -28,31 +28,33 @@ const AuthLayout = ({
   hideHeader,
   keyboardBehavior,
   ...props
-}: IAuthLayoutProps) => (
-  <AuthLayoutContext.Provider value={{ navigation, nav }}>
-    <StatusBar
-      translucent
-      barStyle={hideHeader ? 'dark-content' : 'light-content'}
-      backgroundColor={hideHeader ? colors.secondary[500] : 'transparent'}
-    />
+}: IAuthLayoutProps) => {
+  return (
+    <AuthLayoutContext.Provider value={{ navigation, nav }}>
+      <StatusBar
+        translucent
+        barStyle={hideHeader ? 'dark-content' : 'light-content'}
+        backgroundColor={hideHeader ? colors.secondary[500] : 'transparent'}
+      />
 
-    <SafeAreaView
-      style={{ paddingTop: StatusBar.currentHeight }}
-      tw='flex flex-col h-full overflow-hidden md:flex-row-reverse'
-    >
-      <AppBackground />
-
-      {!hideHeader && <Header headerTitle={headerTitle} />}
-
-      <Footer
-        hideHeader={hideHeader}
-        keyboardBehavior={keyboardBehavior}
-        {...props}
+      <SafeAreaView
+        style={{ paddingTop: StatusBar.currentHeight }}
+        tw='flex flex-col h-full overflow-hidden md:flex-row-reverse'
       >
-        {children}
-      </Footer>
-    </SafeAreaView>
-  </AuthLayoutContext.Provider>
-)
+        <AppBackground />
+
+        {!hideHeader && <Header headerTitle={headerTitle} />}
+
+        <Footer
+          hideHeader={hideHeader}
+          keyboardBehavior={keyboardBehavior}
+          {...props}
+        >
+          {children}
+        </Footer>
+      </SafeAreaView>
+    </AuthLayoutContext.Provider>
+  )
+}
 
 export default styled(AuthLayout)

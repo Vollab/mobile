@@ -1,3 +1,3 @@
-import theme from './custom/colors'
+import colors from './custom/colors'
 
-export type TColors = keyof typeof theme
+export type TColors = keyof typeof colors

@@ -37,7 +37,7 @@ const Dropdown = ({
   const [items, setItems] = useState<IDropdownProps['items']>(initialItems)
 
   return (
-    <View {...props}>
+    <View tw='w-full max-w-screen-s100' {...props}>
       <DropDownPicker
         open={open}
         value={value}

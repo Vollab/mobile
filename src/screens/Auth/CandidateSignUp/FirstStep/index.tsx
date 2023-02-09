@@ -85,7 +85,7 @@ const FirstStep = ({
         tw='mb-6'
       />
 
-      <Button tw='bg-candidate-500' onPress={onSubmit}>
+      <Button theme='candidate' onPress={onSubmit}>
         Próximo passo
       </Button>
     </RelativeScrollView>

@@ -30,7 +30,7 @@ type TRequesterSignUpForm = IRequesterSignUpRequest & {
 const RequesterSignUp = ({
   navigation
 }: TRootStackScreen<'RequesterSignUp'>) => {
-  const { control, handleSubmit, setError } = useForm<TRequesterSignUpForm>({
+  const { control, handleSubmit } = useForm<TRequesterSignUpForm>({
     defaultValues: {
       email: '',
       password: '',
@@ -110,7 +110,7 @@ const RequesterSignUp = ({
         />
 
         <Button
-          tw='bg-requester-500 md:mt-0'
+          theme='requester'
           onPress={() => {
             handleSubmit(onSubmit)()
             navigation.navigate('SignIn')

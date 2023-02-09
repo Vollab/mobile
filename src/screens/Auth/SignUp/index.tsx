@@ -1,55 +1,74 @@
-import { TouchableOpacity, View } from 'react-native'
+import { View } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
+import sizes from '@src/styles/custom/sizes'
 
 import UserIcon from '@src/components/assets/UserIcon'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
+import SquareButton from '@src/components/molecules/SquareButton'
+
+import useResponsiveScale from '@src/hooks/useResponsiveScale'
 
 import { TRootStackScreen } from 'App'
 
 const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
+  const { verticalScale } = useResponsiveScale()
+
   return (
     <AuthLayout nav={{ arrow: true }} navigation={navigation}>
       <View tw='max-w-screen-s100 w-full'>
-        <Text tw='text-xl text-primary-500 font-title text-center'>
+        <Text size='xl' tw='text-primary-500 font-title text-center'>
           Você precisa de ajuda ou quer ajudar alguém?
         </Text>
 
-        <Text tw='text-lg text-candidate-500 mt-8'>Candidato</Text>
+        <Text
+          tw='text-lg text-candidate-500 mt-8'
+          style={{
+            marginTop: verticalScale({ size: sizes[8] })
+          }}
+        >
+          Candidato
+        </Text>
 
         <Text>
           Criar seu próprio portfólio resolvendo problemas do mundo real!
         </Text>
 
-        <Text tw='text-lg text-requester-500 mt-6'>Solicitante</Text>
+        <Text
+          tw='text-lg text-requester-500 mt-6'
+          style={{
+            marginTop: verticalScale({ size: sizes[6] })
+          }}
+        >
+          Solicitante
+        </Text>
 
         <Text>Encontrar voluntários para resolver problemas!</Text>
       </View>
 
       <View
         tw='
-      flex flex-row w-full justify-between mt-8 max-w-screen-s100
-      md:justify-evenly
-    '
+          flex flex-row w-full justify-between max-w-screen-s100
+          md:justify-evenly
+        '
+        style={{
+          marginTop: verticalScale({ size: sizes[8] })
+        }}
       >
-        <TouchableOpacity
+        <SquareButton
+          theme='candidate'
+          label='Candidato'
           onPress={() => navigation.push('CandidateSignUp')}
-          tw='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-candidate-500'
-        >
-          <UserIcon tw='h-8 w-8' fill={colors.secondary[500]} />
+          icon={<UserIcon tw='h-8 w-8' fill={colors.secondary[500]} />}
+        />
 
-          <Text tw='text-secondary-500 mt-4 text-lg'>Candidato</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          tw='flex flex-col h-32 w-32 rounded-xl items-center justify-center bg-requester-500'
+        <SquareButton
+          theme='requester'
+          label='Solicitante'
           onPress={() => navigation.push('RequesterSignUp')}
-        >
-          <UserIcon tw='h-8 w-8' fill={colors.secondary[500]} />
-
-          <Text tw='text-secondary-500 mt-4 text-lg'>Solicitante</Text>
-        </TouchableOpacity>
+          icon={<UserIcon tw='h-8 w-8' fill={colors.secondary[500]} />}
+        />
       </View>
     </AuthLayout>
   )

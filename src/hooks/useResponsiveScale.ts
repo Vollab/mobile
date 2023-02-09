@@ -3,16 +3,16 @@ import { useWindowDimensions } from 'react-native'
 import { pxToNumber } from '@src/utils/px'
 
 type TVerifyLimits = (params: {
-  size: number | string
   min: number
   max: number
+  size: number | string
   scaledSize: number
 }) => number
 
 type TScale = (params: {
-  size: number | string
   min?: number
   max?: number
+  size: number | string
 }) => number
 
 const verifyLimits: TVerifyLimits = ({ size, max, min, scaledSize }) => {
@@ -32,19 +32,19 @@ const useResponsiveScale = () => {
 
   const { width, height } = useWindowDimensions()
 
-  const horizontalScale: TScale = ({ size, max, min }) => {
+  const horizontalScale: TScale = ({ size, max = 1, min = 0 }) => {
     const scaledSize = (width / guidelineBaseWidth) * pxToNumber(size)
 
     return verifyLimits({ max, min, scaledSize, size })
   }
 
-  const verticalScale: TScale = ({ size, max, min }) => {
+  const verticalScale: TScale = ({ size, max = 1, min = 0 }) => {
     const scaledSize = (height / guidelineBaseHeight) * pxToNumber(size)
 
     return verifyLimits({ size, max, min, scaledSize })
   }
 
-  const moderateScale: TScale = ({ size, max, min }) => {
+  const moderateScale: TScale = ({ size, max = 1, min = 0 }) => {
     const factor = 0.5
 
     const scaledSize =

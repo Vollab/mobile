@@ -1,27 +1,30 @@
 import { Pressable, PressableProps } from 'react-native'
 
+import { TColors } from '@src/styles/types'
+
 import Text from '@src/components/atoms/Text'
 
 import { styled } from 'nativewind'
 
 interface IButtonProps extends PressableProps {
+  theme?: TColors
   children: string
   variant?: 'primary' | 'secondary'
 }
 
 const Button = ({
   children,
+  theme = 'primary',
   variant = 'primary',
-
   ...props
 }: IButtonProps) => {
   const bgColors =
     variant === 'primary'
-      ? 'bg-primary'
-      : 'border-2 border-primary-500 bg-secondary-500'
+      ? `bg-${theme}-500`
+      : `border-2 border-${theme}-500 bg-secondary-500`
 
   const textColors =
-    variant === 'primary' ? 'text-secondary-500' : 'text-primary-500'
+    variant === 'primary' ? 'text-secondary-500' : `text-${theme}-500`
 
   return (
     <Pressable
@@ -32,11 +35,11 @@ const Button = ({
       {...props}
     >
       <Text
+        size='lg'
         tw={`
           font-title text-center 
           ${textColors}
         `}
-        size='lg'
       >
         {children}
       </Text>
