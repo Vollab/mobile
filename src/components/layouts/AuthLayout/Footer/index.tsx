@@ -37,18 +37,18 @@ const Footer = ({
   return (
     <>
       {!hideHeader && (
-        <RoundedTop tw='w-full md:hidden' fill={colors.secondary[500]} />
+        <RoundedTop fill={colors.secondary[500]} tw='w-full md:hidden' />
       )}
 
       <View
         tw={`  
-          w-full relative p-8 z-20 bg-secondary-500 overflow-hidden
-          md:w-1/2 md:h-full
+          relative z-20 w-full overflow-hidden bg-secondary-500 p-8
+          md:h-full md:w-1/2
           ${showNav && 'pt-0'}
           ${hideHeader && 'h-full'}
         `}
-        {...props}
         style={{ padding: verticalScale({ size: sizes[8] }) }}
+        {...props}
       >
         {showNav && (
           <Nav fill={nav?.color || colors.primary[500]} tw='pb-4 md:py-8' />
@@ -58,7 +58,7 @@ const Footer = ({
           behavior={keyboardBehavior}
           enabled={!!keyboardBehavior}
           tw={`
-            flex items-center justify-center w-full
+            flex w-full items-center justify-center
             md:flex-1
             ${hideHeader && 'flex-1'}
           `}

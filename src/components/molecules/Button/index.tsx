@@ -22,14 +22,13 @@ const Button = ({
     variant === 'primary'
       ? `bg-${theme}-500`
       : `border-2 border-${theme}-500 bg-secondary-500`
-
   const textColors =
     variant === 'primary' ? 'text-secondary-500' : `text-${theme}-500`
 
   return (
     <Pressable
       tw={`
-        flex align-center h-14 justify-center w-full rounded-full max-w-screen-s100
+        align-center flex h-14 w-full max-w-screen-s100 justify-center rounded-full
         ${bgColors}
       `}
       {...props}
@@ -37,7 +36,7 @@ const Button = ({
       <Text
         size='lg'
         tw={`
-          font-title text-center 
+          text-center font-title 
           ${textColors}
         `}
       >

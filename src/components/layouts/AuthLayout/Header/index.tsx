@@ -28,12 +28,12 @@ const Header = ({ headerTitle }: IHeaderProps) => {
 
   return (
     <View
-      tw='flex flex-1 w-full'
       style={{ paddingHorizontal: moderateScale({ size: sizes[8] }) }}
+      tw='flex w-full flex-1'
     >
       {showNav && <Nav fill={colors.secondary[500]} />}
 
-      <View tw='flex flex-1 items-center justify-center w-full '>
+      <View tw='flex w-full flex-1 items-center justify-center '>
         <Logo
           style={{
             height: moderateScale({ size: sizes[18] }),
@@ -42,7 +42,7 @@ const Header = ({ headerTitle }: IHeaderProps) => {
         />
 
         {headerTitle && (
-          <Text tw='text-secondary-500 text-center font-title mt-8' size='xl'>
+          <Text size='xl' tw='mt-8 text-center font-title text-secondary-500'>
             {headerTitle}
           </Text>
         )}

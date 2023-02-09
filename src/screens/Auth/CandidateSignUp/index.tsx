@@ -10,14 +10,16 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 import useAuthZoom from '@src/hooks/useAuthZoom'
 
 import { TRootStackScreen } from 'App'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 const CandidateSignUp = ({
   navigation
 }: TRootStackScreen<'CandidateSignUp'>) => {
   const [step, setStep] = useState(1)
-
+  const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
+    arrowColor: colors.candidate[500]
+  })
   const { control, handleSubmit } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -30,14 +32,6 @@ const CandidateSignUp = ({
       confirmPassword: ''
     }
   })
-
-  const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
-    arrowColor: colors.candidate[500]
-  })
-
-  const onSubmit = data => {
-    console.log(data)
-  }
 
   const steps = {
     1: (
@@ -63,22 +57,23 @@ const CandidateSignUp = ({
     )
   }
 
+  const onSubmit = data => {
+    console.log(data)
+  }
+
   return (
     <AuthLayout
-      tw={removePadding}
       navigation={navigation}
       hideHeader={hideHeader}
       nav={{
         arrow: nav.arrow,
         color: nav.color,
         onArrowClick: () => {
-          if (step === 1) {
-            navigation.goBack()
-          } else {
-            hideHeader ? Keyboard.dismiss() : setStep(prev => prev - 1)
-          }
+          if (step === 1) navigation.goBack()
+          else hideHeader ? Keyboard.dismiss() : setStep(prev => prev - 1)
         }
       }}
+      tw={removePadding}
     >
       {steps[step]}
     </AuthLayout>

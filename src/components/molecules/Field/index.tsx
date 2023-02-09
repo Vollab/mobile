@@ -1,13 +1,14 @@
 import {
-  Dimensions,
   TextInput,
   TextInputProps,
   TouchableOpacity,
-  View
+  View,
+  useWindowDimensions
 } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
 import sizes from '@src/styles/custom/sizes'
+import { TColors } from '@src/styles/types'
 
 import AlertIcon from '@src/components/assets/AlertIcon'
 import Text from '@src/components/atoms/Text'
@@ -16,12 +17,12 @@ import Tooltip from '@src/components/atoms/Tooltip'
 import { pxToNumber } from '@src/utils/px'
 
 import { styled } from 'nativewind'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Control, Controller, ControllerProps } from 'react-hook-form'
 
 export interface IFieldProps extends TextInputProps {
+  theme?: TColors
   control: Control<any>
-  theme?: keyof typeof colors
   name: ControllerProps['name']
   rules?: ControllerProps['rules']
 }
@@ -35,16 +36,15 @@ const Field = ({
   theme = 'primary',
   ...props
 }: IFieldProps) => {
+  const { width } = useWindowDimensions()
   const [isFocused, setIsFocused] = useState(false)
   const [openTooltip, setOpenTooltip] = useState(false)
   const [popoverSize, setPopoverSize] = useState({ width: 1000, height: 1000 })
 
+  const screenSize = width - pxToNumber(sizes[10]) * 2
   const bestTooltipWidth = popoverSize.width + pxToNumber(sizes[4])
-  const screenSize = Dimensions.get('screen').width - pxToNumber(sizes[10]) * 2
-
   const tooltipWidth =
     bestTooltipWidth < screenSize ? bestTooltipWidth : screenSize
-
   const borderColor = {
     error: 'border-error-500',
     default: 'border-tertiary-500',
@@ -62,8 +62,7 @@ const Field = ({
       }) => (
         <View
           tw={`
-            h-15 w-full border rounded-3xl max-w-screen-s100 flex flex-row items-center justify-center
-
+            flex h-15 w-full max-w-screen-s100 flex-row items-center justify-center rounded-3xl border
             ${isFocused ? borderColor.focused : borderColor.default}
             ${error && borderColor.error}
           `}
@@ -71,10 +70,10 @@ const Field = ({
         >
           {error?.message && (
             <TouchableOpacity
-              tw='h-full pl-4 flex justify-center rounded-l-3xl'
               onPress={() => {
                 setOpenTooltip(prev => !prev)
               }}
+              tw='flex h-full justify-center rounded-l-3xl pl-4'
             >
               <Tooltip
                 width={tooltipWidth}
@@ -90,13 +89,13 @@ const Field = ({
                 }}
                 popover={
                   <Text
-                    tw='text-secondary-500'
                     onLayout={e => {
                       setPopoverSize({
                         width: e.nativeEvent.layout.width,
                         height: e.nativeEvent.layout.height
                       })
                     }}
+                    tw='text-secondary-500'
                   >
                     {error?.message}
                   </Text>
@@ -121,9 +120,9 @@ const Field = ({
               setIsFocused(false)
             }}
             tw={`
-              flex-1 h-full px-4 rounded-3xl placeholder:text-tertiary-400
-              text-${theme}-500
-              ${error && 'rounded-l-none ml-2 pl-2'}
+              h-full flex-1 rounded-3xl px-4
+              placeholder:text-tertiary-400${theme}-500
+              ${error && 'ml-2 rounded-l-none pl-2'}
             `}
           />
         </View>

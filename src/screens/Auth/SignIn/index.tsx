@@ -30,14 +30,25 @@ const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
   const [remember, setRemember] = useState(false)
   const { isKeyboardVisible } = useKeyboardStatus()
   const { control, handleSubmit } = useForm<TSignInForm>({
-    defaultValues: { email: '', password: '' },
-    mode: 'onBlur'
+    mode: 'onBlur',
+    defaultValues: { email: '', password: '' }
   })
   const { nav, removePadding } = useAuthZoom({
     onBackButtonClick: () => {
       navigation.navigate('AuthSelect')
     }
   })
+
+  const passwordValidation = {
+    required: { value: true, message: 'Necessário informar a Senha!' },
+    maxLength: {
+      value: 255,
+      message: 'Limite máximo de 255 caracteres excedido!'
+    }
+  }
+  const headerTitle = isKeyboardVisible
+    ? ''
+    : 'Construa seu portfólio ajudando pessoas'
 
   const onSubmit = (data: ISignInRequest) => {
     console.log({ ...data, remember })
@@ -61,9 +72,7 @@ const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
     <AuthLayout
       nav={nav}
       navigation={navigation}
-      headerTitle={
-        isKeyboardVisible ? '' : 'Construa seu portfólio ajudando pessoas'
-      }
+      headerTitle={headerTitle}
       tw={removePadding}
     >
       <RelativeScrollView tw='w-full'>
@@ -77,25 +86,19 @@ const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
 
         <Field
           name='password'
-          tw='mb-4'
           control={control}
           placeholder='Senha'
           secureTextEntry={true}
-          rules={{
-            maxLength: {
-              value: 255,
-              message: 'Limite máximo de 255 caracteres excedido!'
-            },
-            required: { value: true, message: 'Necessário informar a Senha!' }
-          }}
+          rules={passwordValidation}
+          tw='mb-4'
         />
 
-        <View tw='flex flex-row items-center justify-center mb-4'>
+        <View tw='mb-4 flex flex-row items-center justify-center'>
           <Checkbox
-            tw='mr-4'
             value={remember}
             onValueChange={setRemember}
             color={colors.primary[500]}
+            tw='mr-4'
           />
 
           <TouchableOpacity onPress={() => setRemember(prev => !prev)}>
@@ -103,11 +106,11 @@ const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
           </TouchableOpacity>
         </View>
 
-        <Button tw='mb-3' onPress={handleSubmit(onSubmit)}>
+        <Button onPress={handleSubmit(onSubmit)} tw='mb-3'>
           Entrar
         </Button>
 
-        <TouchableOpacity tw='mb-3 flex flex-row justify-center'>
+        <TouchableOpacity tw='mb-3 flex  flex-row justify-center'>
           <Text size='sm'>Esqueci minha senha</Text>
         </TouchableOpacity>
       </RelativeScrollView>

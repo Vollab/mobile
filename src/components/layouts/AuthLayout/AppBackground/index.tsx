@@ -8,10 +8,10 @@ import { styled } from 'nativewind'
 const AppBackground = () => (
   <Image
     source={bg as any}
-    tw='absolute w-full h-full -z-20'
     style={{
-      height: Platform.OS == 'web' ? String(phoneHeight()) : phoneHeight()
+      height: Platform.OS === 'web' ? String(phoneHeight()) : phoneHeight()
     }}
+    tw='absolute -z-20 h-full w-full'
   />
 )
 

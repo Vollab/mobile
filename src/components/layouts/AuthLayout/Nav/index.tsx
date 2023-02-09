@@ -10,7 +10,7 @@ import ArrowIcon from '@src/components/assets/ArrowIcon'
 import useResponsiveScale from '@src/hooks/useResponsiveScale'
 
 import { styled } from 'nativewind'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 interface INavProps extends ViewProps {
   fill: string
@@ -22,17 +22,17 @@ const Nav = ({ fill, style, ...props }: INavProps) => {
 
   return (
     <View
-      tw='flex w-full'
       style={[{ paddingTop: verticalScale({ size: sizes[8] }) }, style]}
+      tw='flex w-full'
       {...props}
     >
       <TouchableOpacity
-        tw='h-6 w-4 flex items-center justify-center p-4 -translate-x-2 '
         onPress={() => {
           nav.onArrowClick ? nav.onArrowClick() : navigation.goBack()
         }}
+        tw='flex h-6 w-4 -translate-x-2 items-center justify-center p-4 '
       >
-        <ArrowIcon tw='h-6 w-4' fill={fill} />
+        <ArrowIcon fill={fill} tw='h-6 w-4' />
       </TouchableOpacity>
     </View>
   )

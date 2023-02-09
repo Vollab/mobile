@@ -14,7 +14,7 @@ interface IRelativeScrollViewProps extends ScrollViewProps {
 }
 
 const RelativeScrollView = ({
-  className,
+  tw,
   children,
   webWithView = false,
   contentContainerStyle,
@@ -22,19 +22,19 @@ const RelativeScrollView = ({
 }: IRelativeScrollViewProps) =>
   OSRelative(
     <OriginalScrollView
-      tw={className}
       contentContainerStyle={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         ...contentContainerStyle
       }}
+      tw={tw}
       {...props}
     >
       {children}
     </OriginalScrollView>,
     webWithView ? (
-      <View tw={className} {...props}>
+      <View {...props} tw={tw}>
         {children}
       </View>
     ) : (

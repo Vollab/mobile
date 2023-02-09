@@ -21,9 +21,9 @@ interface IFirstStepProps {
 
 const FirstStep = ({
   control,
-  hideHeader,
+  onSubmit,
   showInfo,
-  onSubmit
+  hideHeader
 }: IFirstStepProps) => (
   <>
     {showInfo && (
@@ -37,7 +37,7 @@ const FirstStep = ({
           Candidato
         </Text>
 
-        <Text tw='w-full mb-6  max-w-screen-s100 md:text-center'>
+        <Text tw='mb-6 w-full  max-w-screen-s100 md:text-center'>
           Encontrar voluntários para resolver problemas!
         </Text>
       </>

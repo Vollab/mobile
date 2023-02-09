@@ -12,21 +12,22 @@ import useResponsiveScale from '@src/hooks/useResponsiveScale'
 
 import { TRootStackScreen } from 'App'
 
+const User = <UserIcon fill={colors.secondary[500]} tw='h-8 w-8' />
+
 const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
   const { verticalScale } = useResponsiveScale()
 
   return (
     <AuthLayout nav={{ arrow: true }} navigation={navigation}>
-      <View tw='max-w-screen-s100 w-full'>
-        <Text size='xl' tw='text-primary-500 font-title text-center'>
+      <View tw='w-full max-w-screen-s100'>
+        <Text size='xl' tw='text-center font-title text-primary-500'>
           Você precisa de ajuda ou quer ajudar alguém?
         </Text>
 
         <Text
-          tw='text-lg text-candidate-500 mt-8'
-          style={{
-            marginTop: verticalScale({ size: sizes[8] })
-          }}
+          size='lg'
+          style={{ marginTop: verticalScale({ size: sizes[8] }) }}
+          tw='mt-8 text-candidate-500'
         >
           Candidato
         </Text>
@@ -36,10 +37,9 @@ const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
         </Text>
 
         <Text
-          tw='text-lg text-requester-500 mt-6'
-          style={{
-            marginTop: verticalScale({ size: sizes[6] })
-          }}
+          size='lg'
+          style={{ marginTop: verticalScale({ size: sizes[6] }) }}
+          tw='mt-6 text-requester-500'
         >
           Solicitante
         </Text>
@@ -48,26 +48,21 @@ const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
       </View>
 
       <View
-        tw='
-          flex flex-row w-full justify-between max-w-screen-s100
-          md:justify-evenly
-        '
-        style={{
-          marginTop: verticalScale({ size: sizes[8] })
-        }}
+        style={{ marginTop: verticalScale({ size: sizes[8] }) }}
+        tw='max-w-screen-s100w flex w-full flex-row justify-between md:justify-evenly'
       >
         <SquareButton
+          icon={User}
           theme='candidate'
           label='Candidato'
           onPress={() => navigation.push('CandidateSignUp')}
-          icon={<UserIcon tw='h-8 w-8' fill={colors.secondary[500]} />}
         />
 
         <SquareButton
+          icon={User}
           theme='requester'
           label='Solicitante'
           onPress={() => navigation.push('RequesterSignUp')}
-          icon={<UserIcon tw='h-8 w-8' fill={colors.secondary[500]} />}
         />
       </View>
     </AuthLayout>

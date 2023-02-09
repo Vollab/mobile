@@ -48,7 +48,7 @@ const Text = ({ style, children, size = 'base', ...props }: ITextProps) => {
   }
 
   return (
-    <RNText tw='font-body' style={[style, responsiveFontSize]} {...props}>
+    <RNText style={[style, responsiveFontSize]} tw='font-body' {...props}>
       {children}
     </RNText>
   )

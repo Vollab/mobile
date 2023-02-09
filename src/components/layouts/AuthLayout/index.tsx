@@ -9,15 +9,15 @@ import colors from '@src/styles/custom/colors'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack/lib/typescript/src/types'
 import { styled } from 'nativewind'
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 export interface IAuthLayoutProps {
   children: ReactNode
   hideHeader?: boolean
   headerTitle?: string
   keyboardBehavior?: 'position' | 'height' | 'padding'
-  nav?: { arrow?: boolean; onArrowClick?: any; color?: string }
   navigation: NativeStackScreenProps<any, any>['navigation']
+  nav?: { arrow?: boolean; onArrowClick?: any; color?: string }
 }
 
 const AuthLayout = ({
@@ -39,7 +39,7 @@ const AuthLayout = ({
 
       <SafeAreaView
         style={{ paddingTop: StatusBar.currentHeight }}
-        tw='flex flex-col h-full overflow-hidden md:flex-row-reverse'
+        tw='flex h-full flex-col overflow-hidden md:flex-row-reverse'
       >
         <AppBackground />
 

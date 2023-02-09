@@ -12,9 +12,9 @@ import { styled } from 'nativewind'
 import { ReactNode } from 'react'
 
 interface ISquareButton extends TouchableOpacityProps {
-  theme?: TColors
-  icon: ReactNode
   label: string
+  icon: ReactNode
+  theme?: TColors
 }
 
 const SquareButton = ({
@@ -28,7 +28,7 @@ const SquareButton = ({
 
   return (
     <TouchableOpacity
-      tw='flex flex-col rounded-xl items-center justify-center'
+      tw='flex flex-col items-center justify-center rounded-xl'
       style={[
         {
           backgroundColor: colors[theme][500],
@@ -41,7 +41,9 @@ const SquareButton = ({
     >
       {Icon}
 
-      <Text tw='text-secondary-500 mt-4 text-lg'>{label}</Text>
+      <Text tw='mt-4 text-secondary-500' size='lg'>
+        {label}
+      </Text>
     </TouchableOpacity>
   )
 }

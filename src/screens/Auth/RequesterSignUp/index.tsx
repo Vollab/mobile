@@ -31,13 +31,13 @@ const RequesterSignUp = ({
   navigation
 }: TRootStackScreen<'RequesterSignUp'>) => {
   const { control, handleSubmit } = useForm<TRequesterSignUpForm>({
+    mode: 'onBlur',
     defaultValues: {
       email: '',
       password: '',
       full_name: '',
       confirmPassword: ''
-    },
-    mode: 'onBlur'
+    }
   })
   const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
     arrowColor: colors.requester[500]
@@ -61,7 +61,7 @@ const RequesterSignUp = ({
             Solicitante
           </Text>
 
-          <Text tw='w-full max-w-screen-s100 mb-6 md:text-center'>
+          <Text tw='mb-6 w-full max-w-screen-s100 md:text-center'>
             Encontrar voluntários para resolver problemas!
           </Text>
         </>
