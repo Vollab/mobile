@@ -19,10 +19,10 @@ const AuthSelect = ({ navigation }: TRootStackScreen<'AuthSelect'>) => (
     </Button>
 
     <Button
-      tw='mt-6'
       onPress={() => {
         navigation.navigate('SignUp')
       }}
+      tw='mt-6'
     >
       Cadastrar
     </Button>
