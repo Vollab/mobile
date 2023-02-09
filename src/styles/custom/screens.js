@@ -1,4 +1,9 @@
 module.exports = {
+  xs6: '360px',
+  xs5: '375px',
+  xs4: '390px',
+  xs3: '414px',
+  xs2: '428px',
   xs: '480px',
   sm: '640px',
   md: '768px',
