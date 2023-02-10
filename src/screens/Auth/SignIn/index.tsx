@@ -106,11 +106,11 @@ const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
           </TouchableOpacity>
         </View>
 
-        <Button onPress={handleSubmit(onSubmit)} tw='mb-3'>
+        <Button onPress={handleSubmit(onSubmit)} tw='mb-4'>
           Entrar
         </Button>
 
-        <TouchableOpacity tw='mb-3 flex  flex-row justify-center'>
+        <TouchableOpacity tw='flex  flex-row justify-center'>
           <Text size='sm'>Esqueci minha senha</Text>
         </TouchableOpacity>
       </RelativeScrollView>

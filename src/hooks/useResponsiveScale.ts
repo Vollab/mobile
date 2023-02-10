@@ -74,9 +74,9 @@ export default useResponsiveScale
     Soluto - Size Matters
     https://medium.com/soluto-engineering/size-matters-5aeeb462900a
 
-  if type = vertical the scale only apply in vertical
-  if type = horizontal the scale only apply in horizontal
-  if type = moderate the scale apply in average of vertical and horizontal
+  if (type = vertical)    the scale only apply in vertical
+  if (type = horizontal)  the scale only apply in horizontal
+  if (type = moderate)    the scale apply in average of vertical and horizontal
 
   Example:
     Strength = 0.5

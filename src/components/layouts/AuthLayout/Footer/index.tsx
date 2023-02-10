@@ -44,9 +44,7 @@ const Footer = ({
         `}
         {...props}
       >
-        {showNav && (
-          <Nav fill={nav?.color || colors.primary[500]} tw='pb-4 md:py-8' />
-        )}
+        {showNav && <Nav fill={nav?.color || colors.primary[500]} tw='px-0' />}
 
         <KeyboardAvoidingView
           behavior={keyboardBehavior}

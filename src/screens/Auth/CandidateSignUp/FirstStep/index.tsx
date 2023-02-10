@@ -27,16 +27,16 @@ const FirstStep = ({
   <>
     {showInfo && (
       <>
-        <Steps steps={[{ active: true }, { active: false }]} />
+        <Steps steps={[{ active: true }, { active: false }]} tw='' />
 
         <Text
           size='xl'
-          tw='w-full max-w-screen-s100  text-candidate-500 md:text-center'
+          tw='w-full max-w-screen-s100 text-candidate-500 md:text-center'
         >
           Candidato
         </Text>
 
-        <Text tw='mb-6 w-full  max-w-screen-s100 md:text-center'>
+        <Text tw='mb-6 w-full max-w-screen-s100 md:text-center'>
           Encontrar voluntários para resolver problemas!
         </Text>
       </>
@@ -71,7 +71,7 @@ const FirstStep = ({
         placeholder='Senha'
         secureTextEntry={true}
         rules={passwordValidation}
-        tw='mb-4'
+        tw='mb-6'
       />
 
       <Button theme='candidate' onPress={onSubmit}>

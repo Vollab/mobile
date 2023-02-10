@@ -1,12 +1,9 @@
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
-import sizes from '@src/styles/custom/sizes'
 import { TColors } from '@src/styles/types'
 
 import Text from '@src/components/atoms/Text'
-
-import useResponsiveScale from '@src/hooks/useResponsiveScale'
 
 import { styled } from 'nativewind'
 import { ReactNode } from 'react'
@@ -24,19 +21,10 @@ const SquareButton = ({
   theme = 'primary',
   ...props
 }: ISquareButton) => {
-  const { responsiveScale } = useResponsiveScale()
-
   return (
     <TouchableOpacity
-      tw='flex flex-col items-center justify-center rounded-xl'
-      style={[
-        {
-          backgroundColor: colors[theme][500],
-          height: responsiveScale({ size: sizes[32], limits: { max: 1 } }),
-          width: responsiveScale({ size: sizes[32], limits: { max: 1 } })
-        },
-        style
-      ]}
+      tw='flex h-32 w-32 flex-col items-center justify-center rounded-xl'
+      style={[{ backgroundColor: colors[theme][500] }, style]}
       {...props}
     >
       {Icon}

@@ -86,7 +86,7 @@ const RequesterSignUp = ({
           placeholder='Senha'
           secureTextEntry={true}
           rules={passwordValidation}
-          tw='mb-4'
+          tw='mb-6'
         />
 
         <Button

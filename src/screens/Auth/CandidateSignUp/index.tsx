@@ -81,7 +81,7 @@ const CandidateSignUp = ({
           else hideHeader ? Keyboard.dismiss() : setStep(prev => prev - 1)
         }
       }}
-      tw={removePadding}
+      tw={`pt-0 ${removePadding}`}
     >
       {steps[step]}
     </AuthLayout>

@@ -11,6 +11,8 @@ import { TColors } from '@src/styles/types'
 import ArrowIcon from '@src/components/assets/ArrowIcon'
 import CheckIcon from '@src/components/assets/CheckIcon'
 
+import useResponsiveFontSize from '@src/hooks/useResponsiveFontSize'
+
 import { pxToNumber } from '@src/utils/px'
 
 import { styled } from 'nativewind'
@@ -21,6 +23,7 @@ interface IDropdownProps {
   value: string
   theme?: TColors
   items: DropDownPickerProps<any>['items']
+  onPress?: DropDownPickerProps<any>['onPress']
   placeholder: DropDownPickerProps<any>['placeholder']
   direction?: DropDownPickerProps<any>['dropDownDirection']
 }
@@ -29,6 +32,7 @@ const Check = () => <CheckIcon fill={colors.secondary[500]} tw='h-4 w-4' />
 
 const Dropdown = ({
   value,
+  onPress,
   setValue,
   direction,
   placeholder,
@@ -37,6 +41,7 @@ const Dropdown = ({
   ...props
 }: IDropdownProps) => {
   const [open, setOpen] = useState(false)
+  const responsiveFontSize = useResponsiveFontSize('base')
   const [items, setItems] = useState<IDropdownProps['items']>(initialItems)
 
   const ArrowDown = useCallback(
@@ -66,6 +71,7 @@ const Dropdown = ({
         value={value}
         items={items}
         setOpen={setOpen}
+        onPress={onPress}
         setValue={setValue}
         setItems={setItems}
         placeholder={placeholder}
@@ -73,16 +79,32 @@ const Dropdown = ({
         dropDownDirection={direction}
         ArrowUpIconComponent={ArrowUp}
         ArrowDownIconComponent={ArrowDown}
-        listItemContainerStyle={{ padding: 10 }}
-        labelStyle={{ color: colors[theme][500] }}
-        textStyle={{ color: colors.tertiary[1000] }}
-        placeholderStyle={{ color: colors.tertiary[400] }}
-        listItemLabelStyle={{ color: colors[theme][700] }}
-        selectedItemLabelStyle={{ color: colors.secondary[500] }}
-        dropDownContainerStyle={{ borderColor: colors[theme][600] }}
-        selectedItemContainerStyle={{ backgroundColor: colors[theme][500] }}
+        listItemContainerStyle={{ padding: 0, margin: 0 }}
+        labelStyle={{ color: colors[theme][500], ...responsiveFontSize }}
+        textStyle={{ color: colors.tertiary[1000], ...responsiveFontSize }}
+        placeholderStyle={{
+          color: colors.tertiary[400],
+          ...responsiveFontSize
+        }}
+        listItemLabelStyle={{
+          color: colors[theme][700],
+          ...responsiveFontSize
+        }}
+        selectedItemLabelStyle={{
+          color: colors.secondary[500],
+          ...responsiveFontSize
+        }}
+        dropDownContainerStyle={{
+          borderColor: colors[theme][600]
+        }}
+        modalAnimationType='slide'
+        selectedItemContainerStyle={{
+          backgroundColor: colors[theme][500]
+        }}
         style={{
-          height: pxToNumber(sizes[15]),
+          zIndex: 10,
+          position: 'relative',
+          height: pxToNumber(sizes[15]) - 2,
           borderRadius: pxToNumber(radius.xl),
           paddingLeft: pxToNumber(sizes['4']),
           borderColor:

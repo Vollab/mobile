@@ -78,7 +78,7 @@ const SecondStep = ({
             { label: 'Desenvolvedor Front-end', value: 'frontend' },
             { label: 'Desenvolvedor Full-stack', value: 'fullstack' }
           ]}
-          tw='mb-6'
+          tw='mb-4'
         />
 
         <Dropdown
