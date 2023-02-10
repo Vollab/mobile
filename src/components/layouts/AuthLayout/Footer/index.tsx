@@ -16,6 +16,7 @@ import { ReactNode } from 'react'
 
 interface IFooterProps {
   children: ReactNode
+  isPortrait: boolean
   hideHeader: IAuthLayoutProps['hideHeader']
   keyboardBehavior: IAuthLayoutProps['keyboardBehavior']
 }
@@ -24,21 +25,25 @@ const Footer = ({
   children,
   hideHeader,
   keyboardBehavior,
+  isPortrait,
   ...props
 }: IFooterProps) => {
   const { nav } = useContext(AuthLayoutContext)
-  const showNav = (nav ? isMd() : false) || hideHeader
+  const showNav = (nav ? isMd() && !isPortrait : false) || hideHeader
 
   return (
     <>
       {!hideHeader && (
-        <RoundedTop fill={colors.secondary[500]} tw='w-full md:hidden' />
+        <RoundedTop
+          fill={colors.secondary[500]}
+          tw={`w-full ${!isPortrait && 'md:hidden'}`}
+        />
       )}
 
       <View
         tw={`  
           relative z-20 w-full overflow-hidden bg-secondary-500 p-8
-          md:h-full md:w-1/2
+          ${!isPortrait && 'md:h-full md:w-1/2'}
           ${showNav && 'pt-0'}
           ${hideHeader && 'h-full'}
         `}

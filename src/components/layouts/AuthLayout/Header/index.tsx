@@ -14,13 +14,14 @@ import { IAuthLayoutProps } from '..'
 import { useContext } from 'react'
 
 interface IHeaderProps {
+  isPortrait: boolean
   headerTitle?: IAuthLayoutProps['headerTitle']
 }
 
-const Header = ({ headerTitle }: IHeaderProps) => {
+const Header = ({ headerTitle, isPortrait }: IHeaderProps) => {
   const { nav } = useContext(AuthLayoutContext)
 
-  const showNav = nav && !isMd()
+  const showNav = nav && (!isMd() || isPortrait)
 
   return (
     <View tw='flex w-full flex-1'>

@@ -8,9 +8,11 @@ import { TFontSize } from '@src/styles/types'
 const useResponsiveFontSize = (size: TFontSize) => {
   const { responsiveScale } = useResponsiveScale()
 
+  const limits = { min: 0.8, max: 1.3 }
+
   const responsiveFontSize: StyleProp<TextStyle> = {
-    fontSize: responsiveScale({ size: fontSize[size][0] }),
-    lineHeight: responsiveScale({ size: fontSize[size][1] })
+    fontSize: responsiveScale({ size: fontSize[size][0], limits }),
+    lineHeight: responsiveScale({ size: fontSize[size][1], limits })
   }
 
   return responsiveFontSize

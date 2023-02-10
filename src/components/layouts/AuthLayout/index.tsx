@@ -3,7 +3,7 @@ import Footer from './Footer'
 import Header from './Header'
 import { AuthLayoutContext } from './context'
 
-import { SafeAreaView, StatusBar } from 'react-native'
+import { SafeAreaView, StatusBar, useWindowDimensions } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
 
@@ -29,6 +29,9 @@ const AuthLayout = ({
   keyboardBehavior,
   ...props
 }: IAuthLayoutProps) => {
+  const { width, height } = useWindowDimensions()
+  const isPortrait = width <= height
+
   return (
     <AuthLayoutContext.Provider value={{ navigation, nav }}>
       <StatusBar
@@ -39,13 +42,19 @@ const AuthLayout = ({
 
       <SafeAreaView
         style={{ paddingTop: StatusBar.currentHeight }}
-        tw='flex h-full flex-col overflow-hidden md:flex-row-reverse'
+        tw={`
+          flex h-full flex-col overflow-hidden 
+          ${!isPortrait && 'md:flex-row-reverse'}
+        `}
       >
         <AppBackground />
 
-        {!hideHeader && <Header headerTitle={headerTitle} />}
+        {!hideHeader && (
+          <Header isPortrait={isPortrait} headerTitle={headerTitle} />
+        )}
 
         <Footer
+          isPortrait={isPortrait}
           hideHeader={hideHeader}
           keyboardBehavior={keyboardBehavior}
           {...props}

@@ -27,7 +27,7 @@ const useResponsiveScale = () => {
   const responsiveScale: TResponsiveScale = ({
     size,
     limits,
-    strength = 0.5,
+    strength = 0.18,
     type = 'moderate'
   }) => {
     let newSize = pxToNumber(size)
