@@ -5,7 +5,6 @@ import Field from '@src/components/molecules/Field'
 import Steps from '@src/components/molecules/Steps'
 
 import {
-  confirmPasswordValidation,
   emailValidation,
   fullNameValidation,
   passwordValidation
@@ -73,16 +72,6 @@ const FirstStep = ({
         secureTextEntry={true}
         rules={passwordValidation}
         tw='mb-4'
-      />
-
-      <Field
-        control={control}
-        theme='candidate'
-        secureTextEntry={true}
-        name='confirmPassword'
-        placeholder='Confirmar senha'
-        rules={confirmPasswordValidation}
-        tw='mb-6'
       />
 
       <Button theme='candidate' onPress={onSubmit}>

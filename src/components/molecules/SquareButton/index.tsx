@@ -24,7 +24,7 @@ const SquareButton = ({
   theme = 'primary',
   ...props
 }: ISquareButton) => {
-  const { moderateScale } = useResponsiveScale()
+  const { responsiveScale } = useResponsiveScale()
 
   return (
     <TouchableOpacity
@@ -32,8 +32,8 @@ const SquareButton = ({
       style={[
         {
           backgroundColor: colors[theme][500],
-          height: moderateScale({ size: sizes[32], max: 1 }),
-          width: moderateScale({ size: sizes[32], max: 1 })
+          height: responsiveScale({ size: sizes[32], limits: { max: 1 } }),
+          width: responsiveScale({ size: sizes[32], limits: { max: 1 } })
         },
         style
       ]}

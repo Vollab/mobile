@@ -13,6 +13,15 @@ import { TRootStackScreen } from 'App'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+interface ICandidateSignUpRequest {
+  email: string
+  password: string
+  small_bio: string
+  full_name: string
+  occupation: string
+  experience: string
+}
+
 const CandidateSignUp = ({
   navigation
 }: TRootStackScreen<'CandidateSignUp'>) => {
@@ -20,7 +29,7 @@ const CandidateSignUp = ({
   const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
     arrowColor: colors.candidate[500]
   })
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit } = useForm<ICandidateSignUpRequest>({
     mode: 'onBlur',
     defaultValues: {
       email: '',
@@ -28,8 +37,7 @@ const CandidateSignUp = ({
       small_bio: '',
       full_name: '',
       occupation: '',
-      experience: '',
-      confirmPassword: ''
+      experience: ''
     }
   })
 

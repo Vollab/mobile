@@ -4,11 +4,8 @@ import { AuthLayoutContext } from '../context'
 import { KeyboardAvoidingView, View } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
-import sizes from '@src/styles/custom/sizes'
 
 import RoundedTop from '@src/components/assets/RoundedTop'
-
-import useResponsiveScale from '@src/hooks/useResponsiveScale'
 
 import { isMd } from '@src/utils/dimensions'
 
@@ -30,8 +27,6 @@ const Footer = ({
   ...props
 }: IFooterProps) => {
   const { nav } = useContext(AuthLayoutContext)
-  const { verticalScale } = useResponsiveScale()
-
   const showNav = (nav ? isMd() : false) || hideHeader
 
   return (
@@ -47,7 +42,6 @@ const Footer = ({
           ${showNav && 'pt-0'}
           ${hideHeader && 'h-full'}
         `}
-        style={{ padding: verticalScale({ size: sizes[8] }) }}
         {...props}
       >
         {showNav && (

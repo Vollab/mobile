@@ -15,7 +15,7 @@ import { TRootStackScreen } from 'App'
 const User = <UserIcon fill={colors.secondary[500]} tw='h-8 w-8' />
 
 const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
-  const { verticalScale } = useResponsiveScale()
+  const { responsiveScale } = useResponsiveScale()
 
   return (
     <AuthLayout nav={{ arrow: true }} navigation={navigation}>
@@ -26,7 +26,9 @@ const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
 
         <Text
           size='lg'
-          style={{ marginTop: verticalScale({ size: sizes[8] }) }}
+          style={{
+            marginTop: responsiveScale({ size: sizes[8], type: 'vertical' })
+          }}
           tw='mt-8 text-candidate-500'
         >
           Candidato
@@ -38,7 +40,9 @@ const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
 
         <Text
           size='lg'
-          style={{ marginTop: verticalScale({ size: sizes[6] }) }}
+          style={{
+            marginTop: responsiveScale({ size: sizes[6], type: 'vertical' })
+          }}
           tw='mt-6 text-requester-500'
         >
           Solicitante
@@ -48,8 +52,10 @@ const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
       </View>
 
       <View
-        style={{ marginTop: verticalScale({ size: sizes[8] }) }}
-        tw='max-w-screen-s100w flex w-full flex-row justify-between md:justify-evenly'
+        style={{
+          marginTop: responsiveScale({ size: sizes[8], type: 'vertical' })
+        }}
+        tw='flex w-full max-w-screen-s100 flex-row justify-between md:justify-evenly'
       >
         <SquareButton
           icon={User}

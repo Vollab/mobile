@@ -30,7 +30,7 @@ const Text = ({ style, children, size = 'base', ...props }: ITextProps) => {
   if (!fontsLoaded) return null
 
   return (
-    <RNText style={[style, responsiveFontSize]} tw='font-body' {...props}>
+    <RNText tw='font-body' style={[style, responsiveFontSize]} {...props}>
       {children}
     </RNText>
   )

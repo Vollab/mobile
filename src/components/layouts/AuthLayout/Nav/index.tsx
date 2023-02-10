@@ -18,11 +18,16 @@ interface INavProps extends ViewProps {
 
 const Nav = ({ fill, style, ...props }: INavProps) => {
   const { navigation, nav } = useContext(AuthLayoutContext)
-  const { verticalScale } = useResponsiveScale()
+  const { responsiveScale } = useResponsiveScale()
 
   return (
     <View
-      style={[{ paddingTop: verticalScale({ size: sizes[8] }) }, style]}
+      style={[
+        {
+          paddingVertical: responsiveScale({ size: sizes[4], type: 'vertical' })
+        },
+        style
+      ]}
       tw='flex w-full'
       {...props}
     >
@@ -30,7 +35,7 @@ const Nav = ({ fill, style, ...props }: INavProps) => {
         onPress={() => {
           nav.onArrowClick ? nav.onArrowClick() : navigation.goBack()
         }}
-        tw='flex h-6 w-4 -translate-x-2 items-center justify-center p-4 '
+        tw='flex h-6 w-4 -translate-x-2 items-center justify-center p-4'
       >
         <ArrowIcon fill={fill} tw='h-6 w-4' />
       </TouchableOpacity>

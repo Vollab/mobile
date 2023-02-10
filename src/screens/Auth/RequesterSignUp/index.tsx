@@ -9,7 +9,6 @@ import Field from '@src/components/molecules/Field'
 import useAuthZoom from '@src/hooks/useAuthZoom'
 
 import {
-  confirmPasswordValidation,
   emailValidation,
   fullNameValidation,
   passwordValidation
@@ -23,21 +22,12 @@ interface IRequesterSignUpRequest {
   full_name: string
 }
 
-type TRequesterSignUpForm = IRequesterSignUpRequest & {
-  confirmPassword: string
-}
-
 const RequesterSignUp = ({
   navigation
 }: TRootStackScreen<'RequesterSignUp'>) => {
-  const { control, handleSubmit } = useForm<TRequesterSignUpForm>({
+  const { control, handleSubmit } = useForm<IRequesterSignUpRequest>({
     mode: 'onBlur',
-    defaultValues: {
-      email: '',
-      password: '',
-      full_name: '',
-      confirmPassword: ''
-    }
+    defaultValues: { email: '', password: '', full_name: '' }
   })
   const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
     arrowColor: colors.requester[500]
@@ -97,16 +87,6 @@ const RequesterSignUp = ({
           secureTextEntry={true}
           rules={passwordValidation}
           tw='mb-4'
-        />
-
-        <Field
-          control={control}
-          theme='requester'
-          secureTextEntry={true}
-          name='confirmPassword'
-          placeholder='Confirmar senha'
-          rules={confirmPasswordValidation}
-          tw='mb-6'
         />
 
         <Button
