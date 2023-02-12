@@ -1,37 +1,61 @@
 import { View } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
+import sizes from '@src/styles/custom/sizes'
 
 import UserIcon from '@src/components/assets/UserIcon'
 import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import SquareButton from '@src/components/molecules/SquareButton'
 
+import useResponsiveScale from '@src/hooks/useResponsiveScale'
+
 import { TRootStackScreen } from 'App'
 
 const User = <UserIcon fill={colors.secondary[500]} tw='h-8 w-8' />
 
 const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
+  const { responsiveScale } = useResponsiveScale()
+
   return (
     <AuthLayout nav={{ arrow: true }} navigation={navigation}>
-      <View tw='w-full max-w-screen-s100 '>
+      <View tw='w-full '>
         <Text size='xl' tw='text-center font-title text-primary-500'>
           Você precisa de ajuda ou quer ajudar alguém?
         </Text>
 
-        <Text size='lg' tw='mt-8 text-candidate-500'>
+        <Text
+          size='lg'
+          tw='text-candidate-500 md:text-center'
+          style={{
+            marginTop: responsiveScale({ size: sizes[8], type: 'vertical' })
+          }}
+        >
           Candidato
         </Text>
 
-        <Text>
-          Criar seu próprio portfólio resolvendo problemas do mundo real!
+        <Text tw='md:text-center'>
+          Criar seu próprio portfólio resolvendo problemas reais!
         </Text>
 
-        <Text size='lg' tw='mt-6 text-requester-500'>
+        <Text
+          size='lg'
+          tw='text-requester-500 md:text-center'
+          style={{
+            marginTop: responsiveScale({ size: sizes[6], type: 'vertical' })
+          }}
+        >
           Solicitante
         </Text>
 
-        <Text tw='mb-8'>Encontrar voluntários para resolver problemas!</Text>
+        <Text
+          tw='md:text-center'
+          style={{
+            marginBottom: responsiveScale({ size: sizes[8], type: 'vertical' })
+          }}
+        >
+          Encontre voluntários para resolver problemas!
+        </Text>
       </View>
 
       <View tw='flex w-full max-w-screen-s100 flex-row justify-between md:justify-evenly'>

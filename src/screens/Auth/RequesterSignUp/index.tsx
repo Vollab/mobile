@@ -52,7 +52,7 @@ const RequesterSignUp = ({
           </Text>
 
           <Text tw='mb-6 w-full max-w-screen-s100 md:text-center'>
-            Encontrar voluntários para resolver problemas!
+            Encontre voluntários para resolver problemas!
           </Text>
         </>
       )}

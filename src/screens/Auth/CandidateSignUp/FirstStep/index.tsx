@@ -37,7 +37,7 @@ const FirstStep = ({
         </Text>
 
         <Text tw='mb-6 w-full max-w-screen-s100 md:text-center'>
-          Encontrar voluntários para resolver problemas!
+          Encontre projetos para construir seu portfólio!
         </Text>
       </>
     )}
