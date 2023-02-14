@@ -31,19 +31,24 @@ const Tooltip = ({
 }: ITooltipProps) => {
   const { width } = useWindowDimensions()
   const [open, setOpen] = useState(false)
-  const [popoverSize, setPopoverSize] = useState({ width: 1000, height: 1000 })
+  const [popoverStyle, setPopoverStyle] = useState({
+    width: 1000,
+    height: 1000,
+    opacity: 0
+  })
 
   const maxWidth = maxWidthProp || width - pxToNumber(sizes[24])
 
   const popoverWidth =
-    popoverSize.width < maxWidth ? popoverSize.width : maxWidth
+    popoverStyle.width < maxWidth ? popoverStyle.width : maxWidth
 
   const Popover = (
     <Text
       onLayout={({ nativeEvent }) => {
-        setPopoverSize({
+        setPopoverStyle({
           width: nativeEvent.layout.width,
-          height: nativeEvent.layout.height
+          height: nativeEvent.layout.height,
+          opacity: 1
         })
       }}
       tw={`p-2 text-secondary-500 ${popoverTw}`}
@@ -63,13 +68,18 @@ const Tooltip = ({
         visible={open}
         popover={Popover}
         width={popoverWidth}
-        height={popoverSize.height}
-        containerStyle={{ padding: 0 }}
+        height={popoverStyle.height}
+        containerStyle={{ padding: 0, opacity: popoverStyle.opacity }}
         onOpen={() => {
           setOpen(true)
         }}
         onClose={() => {
           setOpen(false)
+          setPopoverStyle({
+            height: 1000,
+            width: 1000,
+            opacity: 0
+          })
         }}
         {...props}
       >

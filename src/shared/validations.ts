@@ -36,6 +36,6 @@ export const passwordValidation: ControllerProps['rules'] = {
   pattern: {
     message:
       'Senha muito fraca!\nA senha deve conter: \n\n▸ Símbolo \n▸ Número \n▸ Letra minúscula \n▸ Letra maiúscula',
-    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})$/
+    value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[+^=<>!@#$%/\\&*()]).{1,}$/
   }
 }
