@@ -1,9 +1,11 @@
-import { TextInput, TextInputProps, View } from 'react-native'
+/* eslint-disable prettier/prettier */
+import { TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
 
 import colors from '@src/styles/custom/colors'
 import { TColors } from '@src/styles/types'
 
 import AlertIcon from '@src/components/assets/AlertIcon'
+import EyeIcon from '@src/components/assets/EyeIcon'
 import Tooltip from '@src/components/atoms/Tooltip'
 
 import useResponsiveFontSize from '@src/hooks/useResponsiveFontSize'
@@ -30,6 +32,7 @@ const Field = ({
   ...props
 }: IFieldProps) => {
   const [isFocused, setIsFocused] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
   const responsiveFontSize = useResponsiveFontSize('base')
 
   const onFieldFocus = () => setIsFocused(true)
@@ -75,7 +78,7 @@ const Field = ({
             onChangeText={onChange}
             placeholder={placeholder}
             style={[responsiveFontSize]}
-            secureTextEntry={secureTextEntry}
+            secureTextEntry={secureTextEntry && !showPassword}
             onBlur={() => onFieldBlur({ onBlur })}
             // eslint-disable-next-line tailwindcss/classnames-order
             tw={`
@@ -84,6 +87,25 @@ const Field = ({
               ${error && 'rounded-l-none pl-0'}
             `}
           />
+
+          {secureTextEntry && (
+            <TouchableOpacity
+              tw='flex h-full items-center justify-center px-4'
+              onPress={() => setShowPassword(prev => !prev)}
+            >
+              <EyeIcon
+                enabled={!showPassword}
+                fill={
+                  error
+                    ? colors.error[500]
+                    : isFocused || value
+                      ? colors[theme][500]
+                      : colors.tertiary[500]
+                }
+                tw='h-6 w-6'
+              />
+            </TouchableOpacity>
+          )}
         </View>
       )}
     />
