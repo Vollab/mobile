@@ -26,11 +26,7 @@ const SecondStep = ({
   const [occupation, setOccupation] = useState(null)
 
   const smallBioValidation = {
-    maxLength: { value: 20, message: 'Limite de 20 caracteres excedido!' },
-    pattern: {
-      value: /^[a-z\u00C0-\u00FF]$/i,
-      message: 'Texto contêm caracteres inválidos!'
-    }
+    maxLength: { value: 20, message: 'Limite de 20 caracteres excedido!' }
   }
 
   return (

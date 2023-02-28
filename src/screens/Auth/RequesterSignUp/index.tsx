@@ -38,9 +38,9 @@ const RequesterSignUp = ({
   return (
     <AuthLayout
       nav={nav}
+      tw={removePadding}
       navigation={navigation}
       hideHeader={hideHeader}
-      tw={removePadding}
     >
       {showInfo && (
         <>
