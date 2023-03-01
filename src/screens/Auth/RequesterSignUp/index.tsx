@@ -6,14 +6,16 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import Field from '@src/components/molecules/Field'
 
-import useAuthZoom from '@src/hooks/useAuthZoom'
+import { TAuthStackScreen } from '@src/routes/AuthRoutes.route'
 
 import {
   emailValidation,
   fullNameValidation,
   passwordValidation
 } from '@src/shared/validations'
-import { TRootStackScreen } from 'App'
+
+import useAuthZoom from '@src/hooks/useAuthZoom'
+
 import { useForm } from 'react-hook-form'
 
 interface IRequesterSignUpRequest {
@@ -24,7 +26,7 @@ interface IRequesterSignUpRequest {
 
 const RequesterSignUp = ({
   navigation
-}: TRootStackScreen<'RequesterSignUp'>) => {
+}: TAuthStackScreen<'RequesterSignUp'>) => {
   const { control, handleSubmit } = useForm<IRequesterSignUpRequest>({
     mode: 'onBlur',
     defaultValues: { email: '', password: '', full_name: '' }

@@ -8,13 +8,13 @@ import Text from '@src/components/atoms/Text'
 import AuthLayout from '@src/components/layouts/AuthLayout'
 import SquareButton from '@src/components/molecules/SquareButton'
 
-import useResponsiveScale from '@src/hooks/useResponsiveScale'
+import { TAuthStackScreen } from '@src/routes/AuthRoutes.route'
 
-import { TRootStackScreen } from 'App'
+import useResponsiveScale from '@src/hooks/useResponsiveScale'
 
 const User = <UserIcon fill={colors.secondary[500]} tw='h-8 w-8' />
 
-const SignUp = ({ navigation }: TRootStackScreen<'SignUp'>) => {
+const SignUp = ({ navigation }: TAuthStackScreen<'SignUp'>) => {
   const { responsiveScale } = useResponsiveScale()
 
   return (

@@ -8,12 +8,14 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import Field from '@src/components/molecules/Field'
 
+import { TAuthStackScreen } from '@src/routes/AuthRoutes.route'
+
+import { emailValidation } from '@src/shared/validations'
+
 import useAuthZoom from '@src/hooks/useAuthZoom'
 import useKeyboardStatus from '@src/hooks/useKeyboardStatus'
 
 import { useFocusEffect } from '@react-navigation/native'
-import { emailValidation } from '@src/shared/validations'
-import { TRootStackScreen } from 'App'
 import Checkbox from 'expo-checkbox'
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -26,7 +28,7 @@ interface ISignInRequest {
 
 type TSignInForm = Omit<ISignInRequest, 'remember'>
 
-const SignIn = ({ navigation }: TRootStackScreen<'SignIn'>) => {
+const SignIn = ({ navigation }: TAuthStackScreen<'SignIn'>) => {
   const [remember, setRemember] = useState(false)
   const { isKeyboardVisible } = useKeyboardStatus()
   const { control, handleSubmit } = useForm<TSignInForm>({

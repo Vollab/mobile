@@ -7,9 +7,10 @@ import colors from '@src/styles/custom/colors'
 
 import AuthLayout from '@src/components/layouts/AuthLayout'
 
+import { TAuthStackScreen } from '@src/routes/AuthRoutes.route'
+
 import useAuthZoom from '@src/hooks/useAuthZoom'
 
-import { TRootStackScreen } from 'App'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -24,7 +25,7 @@ interface ICandidateSignUpRequest {
 
 const CandidateSignUp = ({
   navigation
-}: TRootStackScreen<'CandidateSignUp'>) => {
+}: TAuthStackScreen<'CandidateSignUp'>) => {
   const [step, setStep] = useState(1)
   const { hideHeader, nav, showInfo, removePadding } = useAuthZoom({
     arrowColor: colors.candidate[500]

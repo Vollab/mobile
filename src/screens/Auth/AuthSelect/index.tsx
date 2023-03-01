@@ -2,15 +2,16 @@ import AuthLayout from '@src/components/layouts/AuthLayout'
 import Button from '@src/components/molecules/Button'
 import GoogleButton from '@src/components/molecules/GoogleButton'
 
-import { TRootStackScreen } from 'App'
+import { TAuthStackScreen } from '@src/routes/AuthRoutes.route'
 
-const AuthSelect = ({ navigation }: TRootStackScreen<'AuthSelect'>) => (
+const AuthSelect = ({ navigation }: TAuthStackScreen<'AuthSelect'>) => (
   <AuthLayout
     navigation={navigation}
     headerTitle='O melhor lugar para construir portfólios ou buscar por voluntários'
   >
     <Button
       variant='secondary'
+      testID='signIn-button'
       onPress={() => {
         navigation.navigate('SignIn')
       }}
@@ -19,6 +20,7 @@ const AuthSelect = ({ navigation }: TRootStackScreen<'AuthSelect'>) => (
     </Button>
 
     <Button
+      testID='signUp-button'
       onPress={() => {
         navigation.navigate('SignUp')
       }}
