@@ -11,8 +11,6 @@ import fontSize from '@src/styles/custom/fontSize'
 
 import useResponsiveFontSize from '@src/hooks/useResponsiveFontSize'
 
-import { styled } from 'nativewind'
-
 interface ITextProps extends RNTextProps {
   size?: keyof typeof fontSize
 }
@@ -36,4 +34,4 @@ const Text = ({ style, children, size = 'base', ...props }: ITextProps) => {
   )
 }
 
-export default styled(Text)
+export default Text
